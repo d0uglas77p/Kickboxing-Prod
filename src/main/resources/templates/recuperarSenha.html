@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<!-- O Spring Boot usa o Thymeleaf para renderizar as views. -->
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Reggae+One&family=Tomorrow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome para o ícone de menu -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <!-- Ant Design Componentes UI -->
+    <link href="https://cdn.jsdelivr.net/npm/antd@4.18.6/dist/antd.min.css" rel="stylesheet">
+
+    <!-- CSS do projeto -->
+    <link href="/static/css/recuperarSenha.css" rel="stylesheet">
+
+    <title>Recuperar Senha</title>
+</head>
+
+<body>
+    <form id="atualizarSenhaForm" action="/atualizarSenha" method="POST">
+        <div class="conteiner-recuperar">
+            <div >
+                <h2>Sua nova senha</h2>
+
+                <input type="hidden" name="token" th:value="${token}">
+
+                <input id="recuperar-senha" name="senha" pattern=".{8,}"
+                       placeholder="Nova senha" required title="A senha deve ter pelo menos 8 caracteres"
+                       type="password">
+
+                <div>
+                    <button type="submit">Redefinir Senha</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+<div th:if="${successMessage}">
+    <script th:inline="javascript">
+        Swal.fire({
+            icon: 'success',
+            text: [[${successMessage}]],
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#00ff00'
+        });
+    </script>
+</div>
+
+<div th:if="${errorMessage}">
+    <script th:inline="javascript">
+        Swal.fire({
+            icon: 'error',
+            text: [[${errorMessage}]],
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#00ff00'
+        });
+    </script>
+</div>
+
+<script src="/static/js/recuperarSenha.js"></script>
+</body>
+</html>
