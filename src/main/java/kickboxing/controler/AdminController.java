@@ -1,13 +1,13 @@
 package kickboxing.controler;
 
+import jakarta.servlet.http.HttpSession;
+import kickboxing.exception.AutenticacaoException;
 import kickboxing.exception.EmailJaCriadoException;
 import kickboxing.exception.TelefoneJaCriadoException;
 import kickboxing.model.Admin;
 import kickboxing.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,9 +19,18 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
+    @PostMapping("/index")
+    public String indexRedirecionar() {
+        return "redirect:/index";
+    }
+
+    @PostMapping("/admin")
+    public String adminRedirecionar() {
+        return "redirect:/admin";
+    }
+
     @PostMapping("/criarConta")
     public String criarConta(@ModelAttribute Admin admin, RedirectAttributes redirectAttributes) {
-
         try {
             Admin novoAdmin = adminService.criarContaAdmin(admin);
             redirectAttributes.addFlashAttribute("successMessage", "Cadastro realizado com sucesso!");
@@ -43,7 +52,6 @@ public class AdminController {
 
     @PostMapping("/recuperarConta")
     public String recuperarConta(@RequestParam("email") String email, RedirectAttributes redirectAttributes) {
-
         try {
             if (!adminService.isEmailCadastrado(email)) {
                 redirectAttributes.addFlashAttribute("errorMessage", "Esse e-mail não está cadastrado!");
@@ -67,7 +75,6 @@ public class AdminController {
 
     @PostMapping("/atualizarSenha")
     public String atualizarSenha(@RequestParam("token") String token, @RequestParam("senha") String novaSenha, RedirectAttributes redirectAttributes) {
-
         try {
             if (adminService.isTokenValido(token)) {
                 adminService.atualizarSenha(token, novaSenha);
@@ -85,16 +92,30 @@ public class AdminController {
         }
     }
 
-    @GetMapping("/recuperarSenha")
-    public String mostrarFormularioRecuperacao(@RequestParam("token") String token, Model model) {
-        if (adminService.isTokenValido(token)) {
-            model.addAttribute("token", token);  // PASSA O TOKEN PARA O THYMELEAF
-            return "recuperarSenha";
+    @PostMapping("/entrar")
+    public String login(@RequestParam("email") String email,
+                        @RequestParam("senha") String senha,
+                        HttpSession session, RedirectAttributes redirectAttributes) {
 
-        } else {
-            model.addAttribute("errorMessage", "Token de recuperação inválido ou expirado.");
-            return "redirect:/index";
+        try {
+            Admin admin = adminService.autenticarAdmin(email, senha);
+
+            session.setAttribute("adminLogado", admin);
+            redirectAttributes.addFlashAttribute("successMessage", "Login efetuado com sucesso.");
+
+            return "redirect:/administracao";
+        } catch (AutenticacaoException e) {
+            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
+
+            return "redirect:/admin";
         }
     }
 
+    @PostMapping("/logout")
+    public String logout(HttpSession session, RedirectAttributes redirectAttributes) {
+        session.invalidate();
+
+        redirectAttributes.addFlashAttribute("successMessage", "Você saiu da sua conta.");
+        return "redirect:/index";
+    }
 }

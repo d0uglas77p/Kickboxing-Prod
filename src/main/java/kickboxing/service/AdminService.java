@@ -1,10 +1,7 @@
 package kickboxing.service;
 
 import jakarta.transaction.Transactional;
-import kickboxing.exception.EmailJaCriadoException;
-import kickboxing.exception.EmailNaoCriadoException;
-import kickboxing.exception.TelefoneJaCriadoException;
-import kickboxing.exception.TokenExpiradoException;
+import kickboxing.exception.*;
 import kickboxing.model.Admin;
 import kickboxing.repository.AdminRepository;
 import org.mindrot.jbcrypt.BCrypt;
@@ -91,5 +88,19 @@ public class AdminService {
         } else {
             throw new TokenExpiradoException("O token expirou ou é inválido.");
         }
+    }
+
+    public Admin autenticarAdmin(String email, String senha) {
+        Admin admin = adminRepository.findByEmail(email);
+
+        if (admin == null) {
+            throw new AutenticacaoException("E-mail ou senha incorretos");
+        }
+
+        if (!BCrypt.checkpw(senha, admin.getSenha())) {
+            throw new AutenticacaoException("E-mail ou senha incorretos");
+        }
+
+        return admin;
     }
 }
