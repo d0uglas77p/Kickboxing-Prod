@@ -24,40 +24,126 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- CSS do projeto -->
-    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/admin.css">
 
-    <title>Administração</title>
+    <title>Login Administrativo</title>
 </head>
 
 <body>
+    <!--INICIO NAV-->
+    <nav>
 
-<div id="teste">
-    <form action="/index" method="post">
-        <h2>ADMINISTRAÇÃO</h2>
+    </nav>
+    <!--FIM NAV-->
 
-        <button class="btn-teste" type="submit">TESTANDO</button>
-    </form>
-</div>
+    <!--INICIO CONTEUDO-->
+    <section>
 
-<!--INICIO NAV-->
-<nav>
+        <!--LOGIN ADMINSTRATIVO-->
+        <div id="loginAdmin">
+            <form action="login" method="post">
+                <div>
+                    <h2>Área do Administrador</h2>
 
-</nav>
-<!--FIM NAV-->
+                    <input type="email" id="email-login" name="email" placeholder="E-mail" required>
+
+                    <input type="password" id="password-login" name="password" placeholder="Senha" required>
+
+                    <div>
+                        <button type="button" onclick="openModalCriarConta()">Cadastrar</button>
+                        <button type="button" onclick="openModalRecuperarConta()">Recuperar</button>
+                        <button type="submit">Entrar</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <!--LOGIN ADMINSTRATIVO-->
+
+        <!-- INICIO MODAL CRIAR CONTA -->
+        <div id="criarContaModal" class="modal-criar-conta">
+            <div class="modal-criar-conta-content">
+                <span class="close-criar-conta" onclick="closeModalCriarConta()">&times;</span>
+                <h2>Criar Conta</h2>
+
+                <form id="criarContaForm" action="/criarConta" method="post">
+                    <input type="text" id="nome-cadastro" name="nome" placeholder="Nome"
+                           pattern="[A-Za-zÀ-ÿ\s]+" required
+                           title="Não utilize caracteres e números neste campo">
+
+                    <input type="text" id="sobrenome-cadastro" name="sobrenome" placeholder="Sobrenome"
+                           pattern="[A-Za-zÀ-ÿ\s]+" required
+                           title="Não utilize caracteres e números neste campo">
+
+                    <input type="tel" id="telefone-cadastro" onkeyup="formatarTelefone(this)" name="telefone"
+                           placeholder="Telefone" maxlength="11" minlength="11" required
+                           title="Número inválido">
+
+                    <input type="email" id="email-cadastro" name="email" placeholder="E-mail"
+                           pattern="^(?!.*\.\.)([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+)\.([a-zA-Z]{2,})$" required
+                           title="E-mail inválido">
+
+                    <input type="password" id="senha" name="senha"
+                           placeholder="Senha"pattern=".{8,}" required
+                           title="A senha deve ter pelo menos 8 caracteres">
+
+                    <button type="submit">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+        <!-- FIM MODAL CRIAR CONTA -->
+
+        <!-- INICIO MODAL RECUPERAR CONTA -->
+        <div id="recuperarContaModal" class="modal-recuperar-conta">
+            <div class="modal-recuperar-conta-content">
+                <span class="close-recuperar-conta" onclick="closeModalRecuperarConta()">&times;</span>
+                <h2>Recuperar Senha</h2>
+
+                <form id="recuperarContaForm" action="/recuperarConta" method="post">
+                           <input type="email" id="email-recuperar" name="email" placeholder="E-mail"
+                           pattern="^(?!.*\.\.)([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+)\.([a-zA-Z]{2,})$" required
+                           title="E-mail inválido">
+
+                    <button type="submit">Recuperar Senha</button>
+                </form>
+            </div>
+        </div>
+        <!-- FIM MODAL RECUPERAR CONTA -->
+
+    </section>
+    <!--FIM CONTEUDO-->
 
 
-<!--INICIO CONTEUDO-->
-<section>
+    <!--INICIO RODAPÉ -->
+    <footer>
 
-</section>
-<!--FIM CONTEUDO-->
+    </footer>
+    <!--FIM RODAPÉ -->
 
+    <!-- Renderiza mensagem de sucesso -->
+    <div th:if="${successMessage}">
+        <script th:inline="javascript">
+            Swal.fire({
+                icon: 'success',
+                text: [[${successMessage}]],
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#00ff00'
+            });
+        </script>
+    </div>
 
-<!--INICIO RODAPÉ -->
-<footer>
+    <!-- Renderiza mensagem de erro -->
+    <div th:if="${errorMessage}">
+        <script th:inline="javascript">
+            Swal.fire({
+                icon: 'error',
+                text: [[${errorMessage}]],
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#00ff00'
+            });
+        </script>
+    </div>
 
-</footer>
-<!--FIM RODAPÉ -->
-
+    <script src="/static/js/admin.js"></script>
 </body>
 </html>
