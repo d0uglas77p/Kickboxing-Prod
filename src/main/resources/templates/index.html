@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- FAVICON 
-    <link rel="icon" href="https://swkrkt.conteige.cloud/resources/static/images/favicon.png"/> -->
+    <!-- FAVICON -->
+    <link rel="icon" href="/images/favicon.png"/>
 
     <!--  VERIFICAÇÃO DE PROPRIEDADE DO SITE NO GOOGLE SEARCH CONSOLE -->
 
@@ -66,7 +66,6 @@
 </head>
 
 <body>
-
     <div id="teste">
         <form action="/admin" method="post">
             <h2>TESTANDO KICKBOXING</h2>
@@ -95,5 +94,30 @@
     </footer>
     <!--FIM RODAPÉ -->
 
+    <!-- Renderiza mensagem de sucesso -->
+    <div th:if="${successMessage}">
+        <script th:inline="javascript">
+            Swal.fire({
+                icon: 'success',
+                text: [[${successMessage}]],
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#00ff00'
+            });
+        </script>
+    </div>
+
+    <!-- Renderiza mensagem de erro -->
+    <div th:if="${errorMessage}">
+        <script th:inline="javascript">
+            Swal.fire({
+                icon: 'error',
+                text: [[${errorMessage}]],
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#00ff00'
+            });
+        </script>
+    </div>
+
+    <script src="/static/js/index.js"></script>
 </body>
 </html>
