@@ -12,7 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.time.format.DateTimeFormatter;
 
 @Controller
-public class MapearPaginasController {
+public class MapearRotasController {
 
     private AdminService adminService;
 
