@@ -34,8 +34,6 @@ public class EventoService {
         eventoRepository.save(evento);
     }
 
-
     //* AMBIENTE DE PRODUÇÃO ACESSE O ARQUIVO ---- "PRODUCAO.MD" ---- *//
     //* IMPORTANTE PARA ENTENDER COMO VAI FUNCIONAR!!!!!!! *//
-
 }

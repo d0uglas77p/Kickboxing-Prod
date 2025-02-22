@@ -4,7 +4,6 @@ import kickboxing.model.Evento;
 import kickboxing.service.EventoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -54,5 +53,4 @@ public class EventoController {
             return "redirect:/administracao";
         }
     }
-
 }

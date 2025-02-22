@@ -24,6 +24,7 @@ public class Evento {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataEvento;
 
+    @Column(nullable = false, columnDefinition = "TIME(0)")
     @JsonFormat(pattern = "HH:mm")
     private LocalTime horaEvento;
 
