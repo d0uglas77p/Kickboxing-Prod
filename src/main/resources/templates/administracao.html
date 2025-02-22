@@ -63,6 +63,110 @@
     </div>
     <!--CADASTRAR EVENTOS-->
 
+    <!--CADASTRAR ACADEMIAS-->
+    <div id="cadastrarAcademia">
+        <form action="/criarAcademia" method="post" enctype="multipart/form-data">
+            <div>
+                <h2>CADASTRAR ACADEMIA</h2>
+
+                <input type="text" id="nome-academia" name="nomeAcademia" placeholder="Nome da Academia" required>
+
+                <input type="text" id="responsavel-academia" name="responsavelAcademia" placeholder="Responsável Técnico" required>
+
+                <input type="text" id="endereco-academia" name="enderecoAcademia" placeholder="Endereço Completo" required>
+
+                <input type="text" id="cidade-academia" name="cidadeAcademia" placeholder="Cidade" required>
+
+                <input type="tel" id="contato-academia" onkeyup="formatarContato(this)" name="contatoAcademia"
+                       placeholder="Contato" maxlength="11" minlength="11" required
+                       title="Número inválido">
+
+                <input type="file" id="imagem-academia" name="imagemAcademia" accept="image/*" required>
+
+                <div>
+                    <button type="submit">Cadastrar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!--CADASTRAR ACADEMIAS-->
+
+    <!--CADASTRAR PATROCINADOR-->
+    <div id="cadastrarPatrocinador">
+        <form action="/criarPatrocinador" method="post" enctype="multipart/form-data">
+            <div>
+                <h2>CADASTRAR PATROCINADOR</h2>
+
+                <input type="text" id="link-patrocinador" name="linkPatrocinador" placeholder="Link de Redirecionamento do Patrocinador" required>
+
+                <input type="file" id="imagem-patrocinador" name="imagemPatrocinador" accept="image/*" required>
+
+                <div>
+                    <button type="submit">Cadastrar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!--CADASTRAR PATROCINADOR-->
+
+    <!--CADASTRAR PROFESSORES-->
+    <div id="cadastrarProfessor">
+        <form action="/criarProfessor" method="post" enctype="multipart/form-data">
+            <div>
+                <h2>CADASTRAR PROFESSOR</h2>
+
+                <input type="text" id="registro-professor" name="registroProfessor" placeholder="Registro do Professor" required>
+
+                <input type="text" id="nome-professor" name="nomeProfessor" placeholder="Nome do Professor" required>
+
+                <input type="text" id="cidade-professor" name="cidadeProfessor" placeholder="Cidade do Professor" required>
+
+                <input type="text" id="graducacao-professor" name="graduacaoProfessor" placeholder="Graduação do Professor" required>
+
+                <input type="text" id="equipe-professor" name="equipeProfessor" placeholder="Equipe do Professor" required>
+
+                <input type="date" id="nascimento-professor" name="nascimentoProfessor" required>
+
+                <input type="file" id="imagem-professor" name="imagemProfessor" accept="image/*" required>
+
+                <div>
+                    <button type="submit">Cadastrar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!--CADASTRAR PROFESSORES-->
+
+    <!--CADASTRAR ALUNOS-->
+    <div id="cadastrarAluno">
+        <form action="/criarAluno" method="post" enctype="multipart/form-data">
+            <div>
+                <h2>CADASTRAR ALUNO</h2>
+
+                <input type="text" id="registro-aluno" name="registroAluno" placeholder="Registro do Aluno" required>
+
+                <input type="text" id="nome-aluno" name="nomeAluno" placeholder="Nome do Aluno" required>
+
+                <input type="text" id="cidade-aluno" name="cidadeAluno" placeholder="Cidade do Aluno" required>
+
+                <input type="text" id="graducacao-aluno" name="graduacaoAluno" placeholder="Graduação do Aluno" required>
+
+                <input type="text" id="academia-aluno" name="academiaAluno" placeholder="Academia do Aluno" required>
+
+                <input type="text" id="responsavel-aluno" name="responsavelAluno" placeholder="Responsável do Aluno" required>
+
+                <input type="date" id="nascimento-aluno" name="nascimentoAluno" required>
+
+                <input type="file" id="imagem-aluno" name="imagemAluno" accept="image/*" required>
+
+                <div>
+                    <button type="submit">Cadastrar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!--CADASTRAR PROFESSORES-->
+
     <!--INICIO NAV-->
     <nav>
 

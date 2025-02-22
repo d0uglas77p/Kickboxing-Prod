@@ -3,6 +3,7 @@ package kickboxing.controler;
 import jakarta.servlet.http.HttpSession;
 import kickboxing.model.Admin;
 import kickboxing.service.AdminService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import java.time.format.DateTimeFormatter;
 @Controller
 public class MapearRotasController {
 
+    @Autowired
     private AdminService adminService;
 
     @GetMapping("/index")
@@ -29,7 +31,7 @@ public class MapearRotasController {
     @GetMapping("/recuperarSenha")
     public String mostrarFormularioRecuperacao(@RequestParam("token") String token, Model model) {
         if (adminService.isTokenValido(token)) {
-            model.addAttribute("token", token);  // PASSA O TOKEN PARA O THYMELEAF
+            model.addAttribute("token", token);
             return "recuperarSenha";
 
         } else {
