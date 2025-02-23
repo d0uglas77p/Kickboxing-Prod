@@ -42,15 +42,15 @@ public class EventoController {
 
             eventoService.salvarEvento(evento, imagemEvento);
             redirectAttributes.addFlashAttribute("successMessage", "Evento cadastrado com sucesso!");
-            return "redirect:/administracao";
+            return "redirect:/eventosAdm";
 
         } catch (IOException e) {
             redirectAttributes.addFlashAttribute("errorMessage", "Erro ao salvar a imagem: " + e.getMessage());
-            return "redirect:/administracao";
+            return "redirect:/eventosAdm";
 
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("errorMessage", "Erro ao cadastrar evento: " + e.getMessage());
-            return "redirect:/administracao";
+            return "redirect:/eventosAdm";
         }
     }
 }

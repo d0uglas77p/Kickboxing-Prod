@@ -21,7 +21,7 @@
     <link href="https://cdn.jsdelivr.net/npm/antd@4.18.6/dist/antd.min.css" rel="stylesheet">
 
     <!-- CSS do projeto -->
-    <link href="/static/css/recuperarSenha.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
 
     <title>Recuperar Senha</title>
 </head>
@@ -44,6 +44,22 @@
             </div>
         </div>
     </form>
+
+    <!--INICIO RODAPÉ -->
+    <footer>
+        <div class="div-footer-logo">
+            <img src="/static/images/logo.png" alt="Logo da My Coding" class="img-footer-logo">
+
+            <a href="https://mycodinghub.tech/" target="_blank">
+                <img src="/static/images/logo-mycoding.png" alt="Logo da My Coding" class="img-footer-logo-mycoding">
+            </a>
+        </div>
+
+        <div>
+            <p>Todos os direitos reservados!</p>
+        </div>
+    </footer>
+    <!--FIM RODAPÉ -->
 
 <div th:if="${successMessage}">
     <script th:inline="javascript">

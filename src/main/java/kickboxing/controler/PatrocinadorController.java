@@ -31,15 +31,15 @@ public class PatrocinadorController {
 
             patrocinadorService.salvarPatrocinador(patrocinador, imagemPatrocinador);
             redirectAttributes.addFlashAttribute("successMessage", "Patrocinador cadastrado com sucesso!");
-            return "redirect:/administracao";
+            return "redirect:/patrocinadoresAdm";
 
         } catch (IOException e) {
             redirectAttributes.addFlashAttribute("errorMessage", "Erro ao salvar a imagem: " + e.getMessage());
-            return "redirect:/administracao";
+            return "redirect:/patrocinadoresAdm";
 
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("errorMessage", "Erro ao cadastrar patrocinador: " + e.getMessage());
-            return "redirect:/administracao";
+            return "redirect:/patrocinadoresAdm";
         }
     }
 }

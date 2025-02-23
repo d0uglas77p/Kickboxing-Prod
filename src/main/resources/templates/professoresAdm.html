@@ -24,9 +24,9 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- CSS do projeto -->
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="/static/css/style.css" rel="stylesheet">
 
-    <title>Administração - Início</title>
+    <title>Administração - Professores</title>
 </head>
 
 <body>
@@ -78,7 +78,33 @@
 
     <!--INICIO CONTEUDO-->
     <section>
+        <!--CADASTRAR PROFESSORES-->
+        <div id="cadastrarProfessor">
+            <form action="/criarProfessor" method="post" enctype="multipart/form-data">
+                <div>
+                    <h2>CADASTRAR PROFESSOR</h2>
 
+                    <input type="text" id="registro-professor" name="registroProfessor" placeholder="Registro do Professor" required>
+
+                    <input type="text" id="nome-professor" name="nomeProfessor" placeholder="Nome do Professor" required>
+
+                    <input type="text" id="cidade-professor" name="cidadeProfessor" placeholder="Cidade do Professor" required>
+
+                    <input type="text" id="graducacao-professor" name="graduacaoProfessor" placeholder="Graduação do Professor" required>
+
+                    <input type="text" id="equipe-professor" name="equipeProfessor" placeholder="Equipe do Professor" required>
+
+                    <input type="date" id="nascimento-professor" name="nascimentoProfessor" required>
+
+                    <input type="file" id="imagem-professor" name="imagemProfessor" accept="image/*" required>
+
+                    <div>
+                        <button type="submit">Cadastrar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--CADASTRAR PROFESSORES-->
     </section>
     <!--FIM CONTEUDO-->
 
@@ -100,6 +126,7 @@
     <!--INICIO RODAPÉ -->
     <footer>
         <div class="div-footer-logo">
+
             <img src="/static/images/logo.png" alt="Logo da My Coding" class="img-footer-logo">
 
             <a href="https://mycodinghub.tech/" target="_blank">

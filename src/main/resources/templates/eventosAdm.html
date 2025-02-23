@@ -26,7 +26,7 @@
     <!-- CSS do projeto -->
     <link rel="stylesheet" href="/static/css/style.css">
 
-    <title>Administração - Início</title>
+    <title>Administração - Eventos</title>
 </head>
 
 <body>
@@ -78,7 +78,30 @@
 
     <!--INICIO CONTEUDO-->
     <section>
+        <!--CADASTRAR EVENTOS-->
+        <div id="cadastrarEvento">
+            <form action="/criarEvento" method="post" enctype="multipart/form-data">
+                <div>
+                    <h2>CADASTRAR EVENTO</h2>
 
+                    <input type="text" id="nome-evento" name="nomeEvento" placeholder="Título" required>
+
+                    <textarea id="descricao-evento" name="descricaoEvento" placeholder="Descrição" required></textarea>
+
+                    <input type="date" id="data-evento" name="dataEvento" required>
+
+                    <input type="time" id="hora-evento" name="horaEvento" required>
+
+                    <input type="file" id="imagem-evento" name="imagemEvento" accept="image/*" required>
+
+                    <div>
+                        <button type="submit">Cadastrar</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <!--CADASTRAR EVENTOS-->
     </section>
     <!--FIM CONTEUDO-->
 
@@ -100,6 +123,7 @@
     <!--INICIO RODAPÉ -->
     <footer>
         <div class="div-footer-logo">
+
             <img src="/static/images/logo.png" alt="Logo da My Coding" class="img-footer-logo">
 
             <a href="https://mycodinghub.tech/" target="_blank">
