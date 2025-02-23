@@ -47,15 +47,15 @@ public class ProfessorController {
 
             professorService.salvarProfessor(professor, imagemProfessor);
             redirectAttributes.addFlashAttribute("successMessage", "Professor cadastrado com sucesso!");
-            return "redirect:/administracao";
+            return "redirect:/professoresAdm";
 
         } catch (IOException e) {
             redirectAttributes.addFlashAttribute("errorMessage", "Erro ao salvar a imagem: " + e.getMessage());
-            return "redirect:/administracao";
+            return "redirect:/professoresAdm";
 
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("errorMessage", "Erro ao cadastrar professor: " + e.getMessage());
-            return "redirect:/administracao";
+            return "redirect:/professoresAdm";
         }
     }
 }

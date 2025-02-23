@@ -24,9 +24,9 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- CSS do projeto -->
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="/static/css/style.css" rel="stylesheet">
 
-    <title>Administração - Início</title>
+    <title>Administração - Alunos</title>
 </head>
 
 <body>
@@ -78,7 +78,35 @@
 
     <!--INICIO CONTEUDO-->
     <section>
+        <!--CADASTRAR ALUNOS-->
+        <div id="cadastrarAluno">
+            <form action="/criarAluno" method="post" enctype="multipart/form-data">
+                <div>
+                    <h2>CADASTRAR ALUNO</h2>
 
+                    <input type="text" id="registro-aluno" name="registroAluno" placeholder="Registro do Aluno" required>
+
+                    <input type="text" id="nome-aluno" name="nomeAluno" placeholder="Nome do Aluno" required>
+
+                    <input type="text" id="cidade-aluno" name="cidadeAluno" placeholder="Cidade do Aluno" required>
+
+                    <input type="text" id="graducacao-aluno" name="graduacaoAluno" placeholder="Graduação do Aluno" required>
+
+                    <input type="text" id="academia-aluno" name="academiaAluno" placeholder="Academia do Aluno" required>
+
+                    <input type="text" id="responsavel-aluno" name="responsavelAluno" placeholder="Responsável do Aluno" required>
+
+                    <input type="date" id="nascimento-aluno" name="nascimentoAluno" required>
+
+                    <input type="file" id="imagem-aluno" name="imagemAluno" accept="image/*" required>
+
+                    <div>
+                        <button type="submit">Cadastrar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--CADASTRAR ALUNOS-->
     </section>
     <!--FIM CONTEUDO-->
 
@@ -100,6 +128,7 @@
     <!--INICIO RODAPÉ -->
     <footer>
         <div class="div-footer-logo">
+
             <img src="/static/images/logo.png" alt="Logo da My Coding" class="img-footer-logo">
 
             <a href="https://mycodinghub.tech/" target="_blank">

@@ -50,15 +50,15 @@ public class AlunoController {
 
             alunoService.salvarAluno(aluno, imagemAluno);
             redirectAttributes.addFlashAttribute("successMessage", "Aluno cadastrado com sucesso!");
-            return "redirect:/administracao";
+            return "redirect:/alunosAdm";
 
         } catch (IOException e) {
             redirectAttributes.addFlashAttribute("errorMessage", "Erro ao salvar a imagem: " + e.getMessage());
-            return "redirect:/administracao";
+            return "redirect:/alunosAdm";
 
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("errorMessage", "Erro ao cadastrar aluno: " + e.getMessage());
-            return "redirect:/administracao";
+            return "redirect:/alunosAdm";
         }
     }
 }

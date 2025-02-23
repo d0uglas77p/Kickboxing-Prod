@@ -43,15 +43,15 @@ public class AcademiaController {
 
             academiaService.salvarAcademia(academia, imagemAcademia);
             redirectAttributes.addFlashAttribute("successMessage", "Academia cadastrada com sucesso!");
-            return "redirect:/administracao";
+            return "redirect:/academiasAdm";
 
         } catch (IOException e) {
             redirectAttributes.addFlashAttribute("errorMessage", "Erro ao salvar a imagem: " + e.getMessage());
-            return "redirect:/administracao";
+            return "redirect:/academiasAdm";
 
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("errorMessage", "Erro ao cadastrar academia: " + e.getMessage());
-            return "redirect:/administracao";
+            return "redirect:/academiasAdm";
         }
     }
 }
