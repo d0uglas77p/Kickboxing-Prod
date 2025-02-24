@@ -22,10 +22,26 @@ function closeModalEditarConta() {
     document.getElementById("editarContaModal").style.display = "none";
 }
 
+function openModalSenhaConta() {
+    closeModalEditarConta();
+
+    document.getElementById("nome-senha").value = document.getElementById("nome-editar").value;
+    document.getElementById("sobrenome-senha").value = document.getElementById("sobrenome-editar").value;
+    document.getElementById("telefone-senha").value = document.getElementById("telefone-editar").value;
+    document.getElementById("email-senha").value = document.getElementById("email-editar").value;
+
+    document.getElementById("senhaContaModal").style.display = "block";
+}
+
+function closeModalSenhaConta() {
+    document.getElementById("senhaContaModal").style.display = "none";
+}
+
 window.onclick = function (event) {
     let criarContaModal = document.getElementById("criarContaModal");
     let recuperarContaModal = document.getElementById("recuperarContaModal");
     let editarContaModal = document.getElementById("editarContaModal");
+    let senhaContaModal = document.getElementById("senhaContaModal");
 
     if (event.target === criarContaModal) {
         closeModalCriarConta();
@@ -37,6 +53,10 @@ window.onclick = function (event) {
 
     if (event.target === editarContaModal) {
         closeModalEditarConta();
+    }
+
+    if (event.target === senhaContaModal) {
+        closeModalSenhaConta();
     }
 };
 

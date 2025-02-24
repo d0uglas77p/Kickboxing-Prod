@@ -83,6 +83,8 @@ html {
     color: white;
     background-color: #00c8ff;
     cursor: pointer;
+    text-align: center;
+    line-height: 30px;
 }
 
 .btn-nav-sair {
@@ -97,8 +99,11 @@ html {
     color: white;
     background-color: #00c8ff;
     cursor: pointer;
+    text-align: center;
+    line-height: 30px;
 }
 
+.btn-nav-sair:hover,
 .btn-nav-sair:hover,
 .btn-nav-perfil:hover {
     background-color: #006aff;
@@ -211,7 +216,110 @@ html {
 .close-editar-conta:hover {
     color: #000;
 }
-/* MODAL CRIAR CONTA */
+
+.btn-salvar-conta {
+    border: none;
+    margin-right: 28px;
+    margin-left: 28px;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: bold;
+    width: 70px;
+    height: 30px;
+    color: white;
+    background-color: #00c8ff;
+    cursor: pointer;
+    text-align: center; 
+    line-height: 30px; 
+}
+
+.btn-salvar-conta:hover {
+    background-color: #006aff;
+}
+
+.conteiner-inputs-editar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.div-inputs-editar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.custom-input-editar {
+    width: 250px;
+    font-size: 14px;
+}
+
+.ant-input-editar::placeholder {
+    color: #4b4b4b !important;
+}
+
+/* MODAL SENHA CONTA */
+.modal-senha-conta {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-senha-conta-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    width: 50%;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.close-senha-conta {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-senha-conta:hover {
+    color: #000;
+}
+
+.modal-senha-conta h2 {
+    margin-bottom: 20px;
+}
+
+.div-senha-conta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.custom-input {
+    width: 200px;
+    font-size: 14px;
+}
+
+.ant-input::placeholder {
+    color: #4b4b4b !important;
+}
+
+/* MODAL SENHA CONTA */
+/* MODAL EDITAR CONTA */
 
 
 /* INICIO FOOTER */

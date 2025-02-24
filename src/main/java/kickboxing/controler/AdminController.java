@@ -6,6 +6,7 @@ import kickboxing.exception.EmailJaCriadoException;
 import kickboxing.exception.TelefoneJaCriadoException;
 import kickboxing.model.Admin;
 import kickboxing.service.AdminService;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -118,4 +119,37 @@ public class AdminController {
         redirectAttributes.addFlashAttribute("successMessage", "Você saiu da sua conta.");
         return "redirect:/index";
     }
+
+    @PostMapping("/editarConta")
+    public String editarConta(@ModelAttribute Admin adminAtualizado,
+                              @RequestParam("senha-conta") String senhaConfirmacao,
+                              HttpSession session,
+                              RedirectAttributes redirectAttributes) {
+        try {
+            Admin adminLogado = (Admin) session.getAttribute("adminLogado");
+
+            if (adminLogado == null) {
+                redirectAttributes.addFlashAttribute("errorMessage", "Usuário não está logado.");
+                return "redirect:/administracao";
+            }
+
+            // Valida a senha antes de permitir a edição
+            if (!BCrypt.checkpw(senhaConfirmacao, adminLogado.getSenha())) {
+                redirectAttributes.addFlashAttribute("errorMessage", "Senha incorreta.");
+                return "redirect:/administracao";
+            }
+
+            adminAtualizado.setId(adminLogado.getId());
+            Admin adminAtualizadoFinal = adminService.editarPerfil(adminAtualizado, adminLogado);
+            session.setAttribute("adminLogado", adminAtualizadoFinal);
+
+            redirectAttributes.addFlashAttribute("successMessage", "Perfil atualizado com sucesso!");
+            return "redirect:/administracao";
+
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Erro ao atualizar o perfil: " + e.getMessage());
+            return "redirect:/administracao";
+        }
+    }
+
 }
