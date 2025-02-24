@@ -103,4 +103,14 @@ public class AdminService {
 
         return admin;
     }
+
+    public Admin editarPerfil(Admin adminAtualizado, Admin adminLogado) {
+        adminLogado.setNome(adminAtualizado.getNome());
+        adminLogado.setSobrenome(adminAtualizado.getSobrenome());
+        adminLogado.setTelefone(adminAtualizado.getTelefone());
+        adminLogado.setEmail(adminAtualizado.getEmail());
+
+        return adminRepository.save(adminLogado);
+    }
+
 }

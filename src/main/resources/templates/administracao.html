@@ -17,6 +17,9 @@
     <!-- Font Awesome para o ícone de menu -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
+    <!-- Ant Design Componentes UI -->
+    <link href="https://cdn.jsdelivr.net/npm/antd@4.18.6/dist/antd.min.css" rel="stylesheet">
+
     <!-- Sweet Alert Componentes UI -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -75,38 +78,62 @@
 
     <!--INICIO CONTEUDO-->
     <section>
-        <!-- INICIO MODAL EDITAR CONTA -->
+        <!-- MODAL EDITAR CONTA -->
         <div id="editarContaModal" class="modal-editar-conta">
             <div class="modal-editar-conta-content">
                 <span class="close-editar-conta" onclick="closeModalEditarConta()">&times;</span>
                 <h2>Editar Conta</h2>
 
-                <form id="editarContaForm" action="/editarConta" method="post">
-                    <input type="text" id="nome-editar" name="nome" placeholder="Nome"
-                           pattern="[A-Za-zÀ-ÿ\s]+" required
-                           title="Não utilize caracteres e números neste campo">
+                <form id="editarContaForm">
+                    <div class="conteiner-inputs-editar">
+                        <div class="div-inputs-editar">
+                            <input type="text" id="nome-editar" name="nome" placeholder="Nome"
+                                pattern="[A-Za-zÀ-ÿ\s]+" th:value="${admin.nome}" 
+                                class="ant-input custom-input-editar" required>
 
-                    <input type="text" id="sobrenome-editar" name="sobrenome" placeholder="Sobrenome"
-                           pattern="[A-Za-zÀ-ÿ\s]+" required
-                           title="Não utilize caracteres e números neste campo">
+                            <input type="text" id="sobrenome-editar" name="sobrenome" placeholder="Sobrenome"
+                                pattern="[A-Za-zÀ-ÿ\s]+" th:value="${admin.sobrenome}" 
+                                class="ant-input custom-input-editar" required>
+                        </div>
 
-                    <input type="tel" id="telefone-editar" onkeyup="formatarTelefone(this)" name="telefone"
-                           placeholder="Telefone" maxlength="11" minlength="11" required
-                           title="Número inválido">
+                        <div class="div-inputs-editar">
+                            <input type="tel" id="telefone-editar" onkeyup="formatarTelefone(this)" name="telefone"
+                                placeholder="Telefone" maxlength="11" minlength="11" th:value="${admin.telefone}" 
+                                class="ant-input custom-input-editar" required>
 
-                    <input type="email" id="email-editar" name="email" placeholder="E-mail"
-                           pattern="^(?!.*\.\.)([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+)\.([a-zA-Z]{2,})$" required
-                           title="E-mail inválido">
+                            <input type="email" id="email-editar" name="email" placeholder="E-mail"
+                                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" th:value="${admin.email}" 
+                                class="ant-input custom-input-editar" required>
+                        </div>
+                    </div>
 
-                    <input type="password" id="senha-editar" name="senha"
-                           placeholder="Senha"pattern=".{8,}" required
-                           title="A senha deve ter pelo menos 8 caracteres">
-
-                    <button type="submit">Editar</button>
+                    <button type="button" onclick="openModalSenhaConta()" class="btn-salvar-conta">Editar</button>
                 </form>
             </div>
         </div>
-        <!-- FIM MODAL EDITAR CONTA -->
+
+        <!-- MODAL SENHA CONTA -->
+        <div id="senhaContaModal" class="modal-senha-conta">
+            <div class="modal-senha-conta-content">
+                <span class="close-senha-conta" onclick="closeModalSenhaConta()">&times;</span>
+                <h2>Senha da Conta Administrativa</h2>
+
+                <form id="senhaContaForm" action="/editarConta" method="post">
+                    <input type="hidden" id="nome-senha" name="nome">
+                    <input type="hidden" id="sobrenome-senha" name="sobrenome">
+                    <input type="hidden" id="telefone-senha" name="telefone">
+                    <input type="hidden" id="email-senha" name="email">
+
+                    <div class="div-senha-conta">
+                        <input type="password" id="senha-conta" name="senha-conta" placeholder="Senha"
+                            pattern=".{8,}" required title="A senha deve ter pelo menos 8 caracteres"
+                            autocomplete="new-password" autocorrect="off" spellcheck="false" class="ant-input custom-input">
+
+                        <button type="submit" class="btn-salvar-conta">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </section>
     <!--FIM CONTEUDO-->
 

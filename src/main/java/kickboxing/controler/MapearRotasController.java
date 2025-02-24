@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.format.DateTimeFormatter;
@@ -33,7 +34,7 @@ public class MapearRotasController {
 
     private String verificarSessao(HttpSession session, RedirectAttributes redirectAttributes) {
         if (!isAdminLogado(session)) {
-            redirectAttributes.addFlashAttribute("errorMessage", "Você precisa ser um administrador para acessar essa página.");
+            redirectAttributes.addFlashAttribute("errorMessage", "Você precisa ser um administrador autenticado.");
             return "redirect:/index";
         }
         return null;
@@ -73,6 +74,18 @@ public class MapearRotasController {
     public String rankingAdmPage(HttpSession session, RedirectAttributes redirectAttributes) {
         String redirecionamento = verificarSessao(session, redirectAttributes);
         return redirecionamento != null ? redirecionamento : "rankingAdm";
+    }
+
+    @GetMapping("/recuperarSenha")
+    public String mostrarFormularioRecuperacao(@RequestParam("token") String token, Model model) {
+        if (adminService.isTokenValido(token)) {
+            model.addAttribute("token", token);
+            return "recuperarSenha";
+
+        } else {
+            model.addAttribute("errorMessage", "Token de recuperação inválido ou expirado.");
+            return "redirect:/index";
+        }
     }
 
     @GetMapping("/administracao")
