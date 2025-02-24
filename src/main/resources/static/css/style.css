@@ -20,10 +20,12 @@ html {
     justify-content: space-between;
 }
 
-.div-top h1 {
+.titulo-h1 {
     font-size: 20px;
-    margin-top: 10px;
-    margin-left: 200px;
+    font-width: bold;
+    margin-top: 30px;
+    margin-bottom: 5px;
+    margin-left: 210px;
     margin-right: 28px;
     color: #787878;
 }
@@ -43,7 +45,6 @@ html {
     top: 0;
     z-index: 10;
 }
-                                                     
 
 .nav-list-administracao {
     display: flex;
@@ -57,6 +58,7 @@ html {
     padding: 20px;
     font-size: 18px;
     font-weight: bold;
+    text-decoration: none;
 }
 
 .nav-list-administracao a:hover{
@@ -65,16 +67,41 @@ html {
 
 .img-nav-logo {
     margin-left: 28px;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
     padding: 0;
-    width: 150px;
+    width: 160px;
     height: auto;
 }
 
+.btn-nav-perfil {
+    border: none;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: bold;
+    width: 70px;
+    height: 30px;
+    color: white;
+    background-color: #00c8ff;
+    cursor: pointer;
+}
+
 .btn-nav-sair {
+    border: none;
     margin-right: 28px;
     margin-left: 28px;
-    padding: 0;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: bold;
+    width: 70px;
+    height: 30px;
+    color: white;
+    background-color: #00c8ff;
+    cursor: pointer;
+}
+
+.btn-nav-sair:hover,
+.btn-nav-perfil:hover {
+    background-color: #006aff;
 }
 /* FIM NAV ADMINISTRACAO */
 
@@ -150,6 +177,41 @@ html {
     color: #000;
 }
 /* MODAL RECUPERAR CONTA */
+
+/* MODAL EDITAR CONTA */
+.modal-editar-conta {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-editar-conta-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    width: 50%;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.close-editar-conta {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-editar-conta:hover {
+    color: #000;
+}
+/* MODAL CRIAR CONTA */
 
 
 /* INICIO FOOTER */
