@@ -79,25 +79,41 @@
         <!--CADASTRAR PROFESSORES-->
         <div id="cadastrarProfessor">
             <form action="/criarProfessor" method="post" enctype="multipart/form-data">
-                <div>
+
+                <div class="cadastrar-evento-h2">
                     <h2>CADASTRAR PROFESSOR</h2>
+                </div>
 
-                    <input type="text" id="registro-professor" name="registroProfessor" placeholder="Registro do Professor" required>
+                <div class="conteiner-cadastrar-professores">
+                    <div class="div-cadastrar-professores-registro">
+                        <input type="text" id="registro-professor" name="registroProfessor" 
+                        placeholder="Registro do Professor" class="ant-input custom-input-editar" required>
 
-                    <input type="text" id="nome-professor" name="nomeProfessor" placeholder="Nome do Professor" required>
+                        <input type="text" id="nome-professor" name="nomeProfessor" 
+                         placeholder="Nome do Professor" class="ant-input custom-input-editar" required>
+                    </div>
 
-                    <input type="text" id="cidade-professor" name="cidadeProfessor" placeholder="Cidade do Professor" required>
+                    <div class="div-cadastrar-professores-cidade">
+                        <input type="text" id="cidade-professor" name="cidadeProfessor" 
+                        placeholder="Cidade do Professor" class="ant-input custom-input-editar" required>
 
-                    <input type="text" id="graducacao-professor" name="graduacaoProfessor" placeholder="Graduação do Professor" required>
+                        <input type="text" id="graducacao-professor" name="graduacaoProfessor" 
+                        placeholder="Graduação do Professor" class="ant-input custom-input-editar" required>
+                    </div>
 
-                    <input type="text" id="equipe-professor" name="equipeProfessor" placeholder="Equipe do Professor" required>
+                    <div class="div-cadastrar-professores-equipe">
+                        <input type="text" id="equipe-professor" name="equipeProfessor" 
+                        placeholder="Equipe do Professor" class="ant-input custom-input-editar" required>
 
-                    <input type="date" id="nascimento-professor" name="nascimentoProfessor" required>
+                        <input type="date" id="nascimento-professor" name="nascimentoProfessor" 
+                        class="ant-input custom-input-data" required>
+                    </div>
 
-                    <input type="file" id="imagem-professor" name="imagemProfessor" accept="image/*" required>
+                    <div class="div-cadastrar-professores-upload">
+                        <input type="file" id="imagem-professores" name="imagemProfessor" accept="image/*"
+                        class="ant-input custom-input-upload" required>
 
-                    <div>
-                        <button type="submit">Cadastrar</button>
+                        <button type="submit" class="btn-cadastrar">Cadastrar</button>
                     </div>
                 </div>
             </form>
