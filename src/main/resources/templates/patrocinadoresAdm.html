@@ -87,7 +87,7 @@
                 <div class="conteiner-cadastrar-patrocinadores">
                     <input type="text" id="link-patrocinador" name="linkPatrocinador" 
                     placeholder="Link de Redirecionamento do Patrocinador" 
-                    class="ant-input custom-input-redirecionamento"required>
+                    class="ant-input custom-input-redirecionamento" required>
 
                     <input type="file" id="imagem-patrocinadores" name="imagemPatrocinador" accept="image/*"
                     class="ant-input custom-input-upload-patrocinadores" required>                
@@ -109,29 +109,25 @@
             <ul>
                 <li th:each="patrocinador : ${patrocinadores}">
                     <a th:href="${patrocinador.linkPatrocinador}" target="_blank">
-                        <img th:src="${patrocinador.imagemPatrocinador}" alt="Patrocinador" width="150">
+                        <img th:src="${patrocinador.imagemPatrocinador}" alt="Patrocinador" width="120">
                     </a>
+
+                    <form th:id="'formExcluir_' + ${patrocinador.idPatrocinador}"
+                          th:action="@{/patrocinadores/{id}(id=${patrocinador.idPatrocinador})}"
+                          method="post">
+
+                        <input type="hidden" name="_method" value="DELETE">
+
+                        <button type="button" class="icon-lixo" th:attr="data-id=${patrocinador.idPatrocinador}">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </form>
                 </li>
             </ul>
         </div>
         <!--REGISTROS PATROCINADORES-->
     </section>
     <!--FIM CONTEUDO-->
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
 
     <!--INICIO RODAPÉ -->
     <footer>
@@ -150,6 +146,7 @@
     </footer>
     <!--FIM RODAPÉ -->
 
+    <!-- Sweet Alert Componentes UI -->
     <!-- Renderiza mensagem de sucesso -->
     <div th:if="${successMessage}">
         <script th:inline="javascript">
@@ -173,6 +170,31 @@
             });
         </script>
     </div>
+
+    <!-- POPUP DE CONFIRMAR EXCLUSÃO ESTILIZADO -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".icon-lixo").forEach(button => {
+                button.addEventListener("click", function () {
+                    let patrocinadorId = this.getAttribute("data-id");
+                    Swal.fire({
+                        title: "Tem certeza?",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#d33",
+                        cancelButtonColor: "#3085d6",
+                        confirmButtonText: "Sim, excluir!",
+                        cancelButtonText: "Cancelar"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            document.getElementById("formExcluir_" + patrocinadorId).submit();
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+    <!-- Sweet Alert Componentes UI -->
 
     <script src="/static/js/javascript.js"></script>
 </body>

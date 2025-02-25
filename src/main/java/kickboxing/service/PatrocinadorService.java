@@ -39,6 +39,20 @@ public class PatrocinadorService {
         return patrocinadorRepository.findAll();
     }
 
+    public void excluirPatrocinador(Long id) {
+        Patrocinador patrocinador = patrocinadorRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Patrocinador não encontrado"));
+
+        // Remover imagem
+        File imagem = new File(System.getProperty("user.dir") + "/src/main/resources/static" + patrocinador.getImagemPatrocinador());
+        if (imagem.exists()) {
+            imagem.delete();
+        }
+
+        patrocinadorRepository.deleteById(id);
+    }
+
+
     //* AMBIENTE DE PRODUÇÃO ACESSE O ARQUIVO ---- "PRODUCAO.MD" ---- *//
     //* IMPORTANTE PARA ENTENDER COMO VAI FUNCIONAR!!!!!!! *//
 }

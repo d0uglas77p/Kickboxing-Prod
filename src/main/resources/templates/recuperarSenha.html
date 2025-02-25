@@ -27,8 +27,9 @@
 </head>
 
 <body>
+    <!-- RECUPERAR SENHA PAGINA -->
     <form id="recuperarSenhaForm" action="/atualizarSenha" method="POST">
-        <div class="conteiner-recuperar-conta-inputs">        
+        <div class="conteiner-recuperar-conta-pagina">
             <img src="/static/images/logo.png" alt="Logo da F.G.K.B" class="img-login-logo">
 
             <h2>Sua nova senha</h2>
@@ -44,29 +45,30 @@
             </div>
         </div>
     </form>
+    <!-- RECUPERAR SENHA PAGINA -->
 
-<div th:if="${successMessage}">
-    <script th:inline="javascript">
-        Swal.fire({
-            icon: 'success',
-            text: [[${successMessage}]],
-            confirmButtonText: 'OK',
-            confirmButtonColor: '#00ff00'
-        });
-    </script>
-</div>
+    <div th:if="${successMessage}">
+        <script th:inline="javascript">
+            Swal.fire({
+                icon: 'success',
+                text: [[${successMessage}]],
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#00ff00'
+            });
+        </script>
+    </div>
 
-<div th:if="${errorMessage}">
-    <script th:inline="javascript">
-        Swal.fire({
-            icon: 'error',
-            text: [[${errorMessage}]],
-            confirmButtonText: 'OK',
-            confirmButtonColor: '#00ff00'
-        });
-    </script>
-</div>
+    <div th:if="${errorMessage}">
+        <script th:inline="javascript">
+            Swal.fire({
+                icon: 'error',
+                text: [[${errorMessage}]],
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#00ff00'
+            });
+        </script>
+    </div>
 
-<script src="/static/js/javascript.js"></script>
+    <script src="/static/js/javascript.js"></script>
 </body>
 </html>
