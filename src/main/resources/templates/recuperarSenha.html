@@ -27,16 +27,16 @@
 </head>
 
 <body>
-    <form id="atualizarSenhaForm" action="/atualizarSenha" method="POST">
+    <form id="recuperarSenhaForm" action="/atualizarSenha" method="POST">
         <div class="conteiner-recuperar">
             <div >
                 <h2>Sua nova senha</h2>
 
                 <input type="hidden" name="token" th:value="${token}">
 
-                <input id="recuperar-senha" name="senha" pattern=".{8,}"
-                       placeholder="Nova senha" required title="A senha deve ter pelo menos 8 caracteres"
-                       type="password">
+                <input type="password" id="senha-recuperar-conta" name="senha" placeholder="Senha"
+                       pattern=".{8,}" required title="A senha deve ter pelo menos 8 caracteres"
+                       autocomplete="new-password" autocorrect="off" spellcheck="false" class="ant-input custom-input">
 
                 <div>
                     <button type="submit">Redefinir Senha</button>
@@ -48,7 +48,7 @@
     <!--INICIO RODAPÉ -->
     <footer>
         <div class="div-footer-logo">
-            <img src="/static/images/logo.png" alt="Logo da My Coding" class="img-footer-logo">
+            <img src="/static/images/logo.png" alt="Logo da F.G.K.B" class="img-footer-logo">
 
             <a href="https://mycodinghub.tech/" target="_blank">
                 <img src="/static/images/logo-mycoding.png" alt="Logo da My Coding" class="img-footer-logo-mycoding">

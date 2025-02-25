@@ -79,22 +79,35 @@
         <!--CADASTRAR EVENTOS-->
         <div id="cadastrarEvento">
             <form action="/criarEvento" method="post" enctype="multipart/form-data">
-                <div>
+
+                <div class="cadastrar-evento-h2">
                     <h2>CADASTRAR EVENTO</h2>
+                </div>
 
-                    <input type="text" id="nome-evento" name="nomeEvento" placeholder="Título" required>
+                <div class="conteiner-cadastrar-eventos">
+                
+                    <div class="div-cadastrar-eventos-text">
+                        <input type="text" id="nome-evento" name="nomeEvento" placeholder="Título" 
+                        class="ant-input custom-input-editar" required>
 
-                    <textarea id="descricao-evento" name="descricaoEvento" placeholder="Descrição" required></textarea>
-
-                    <input type="date" id="data-evento" name="dataEvento" required>
-
-                    <input type="time" id="hora-evento" name="horaEvento" required>
-
-                    <input type="file" id="imagem-evento" name="imagemEvento" accept="image/*" required>
-
-                    <div>
-                        <button type="submit">Cadastrar</button>
+                        <textarea id="descricao-evento" name="descricaoEvento" placeholder="Descrição" 
+                        class="ant-input custom-input-text-area" maxlength="300" required></textarea>
                     </div>
+
+                    <div class="div-cadastrar-eventos-data">
+                        <input type="date" id="data-evento" name="dataEvento" 
+                        class="ant-input ant-input custom-input-data" required>
+
+                        <input type="time" id="hora-evento" name="horaEvento" 
+                        class="ant-input custom-input-hora" required>
+                    </div>
+                </div>
+
+                <div class="div-cadastrar-eventos-upload">
+                    <input type="file" id="imagem-evento" name="imagemEvento" accept="image/*"
+                    class="ant-input custom-input-upload" required>
+
+                    <button type="submit" class="btn-cadastrar">Cadastrar</button>
 
                 </div>
             </form>
@@ -122,7 +135,7 @@
     <footer>
         <div class="div-footer-logo">
 
-            <img src="/static/images/logo.png" alt="Logo da My Coding" class="img-footer-logo">
+            <img src="/static/images/logo.png" alt="Logo da F.G.K.B" class="img-footer-logo">
 
             <a href="https://mycodinghub.tech/" target="_blank">
                 <img src="/static/images/logo-mycoding.png" alt="Logo da My Coding" class="img-footer-logo-mycoding">

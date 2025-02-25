@@ -79,16 +79,22 @@
         <!--CADASTRAR PATROCINADOR-->
         <div id="cadastrarPatrocinador">
             <form action="/criarPatrocinador" method="post" enctype="multipart/form-data">
-                <div>
+
+                <div class="cadastrar-evento-h2">
                     <h2>CADASTRAR PATROCINADOR</h2>
+                </div>
 
-                    <input type="text" id="link-patrocinador" name="linkPatrocinador" placeholder="Link de Redirecionamento do Patrocinador" required>
+                <div class="conteiner-cadastrar-patrocinadores">
+                    <input type="text" id="link-patrocinador" name="linkPatrocinador" 
+                    placeholder="Link de Redirecionamento do Patrocinador" 
+                    class="ant-input custom-input-redirecionamento"required>
 
-                    <input type="file" id="imagem-patrocinador" name="imagemPatrocinador" accept="image/*" required>
+                    <input type="file" id="imagem-patrocinadores" name="imagemPatrocinador" accept="image/*"
+                    class="ant-input custom-input-upload-patrocinadores" required>                
+                </div>
 
-                    <div>
-                        <button type="submit">Cadastrar</button>
-                    </div>
+                <div class="div-cadastrar-patrocinadores-btn">
+                    <button type="submit" class="btn-cadastrar">Cadastrar</button>
                 </div>
             </form>
         </div>
@@ -115,7 +121,7 @@
     <footer>
         <div class="div-footer-logo">
 
-            <img src="/static/images/logo.png" alt="Logo da My Coding" class="img-footer-logo">
+            <img src="/static/images/logo.png" alt="Logo da F.G.K.B" class="img-footer-logo">
 
             <a href="https://mycodinghub.tech/" target="_blank">
                 <img src="/static/images/logo-mycoding.png" alt="Logo da My Coding" class="img-footer-logo-mycoding">

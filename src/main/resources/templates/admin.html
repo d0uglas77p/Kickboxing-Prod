@@ -30,29 +30,28 @@
 </head>
 
 <body>
-    <!--INICIO NAV-->
-    <nav>
-
-    </nav>
-    <!--FIM NAV-->
-
     <!--INICIO CONTEUDO-->
     <section>
-
         <!--LOGIN ADMINSTRATIVO-->
         <div id="loginAdmin">
             <form action="/entrar" method="post">
-                <div>
+                <div class="conteiner-login">
                     <h2>Login do Administrador</h2>
 
-                    <input type="email" id="email-login" name="email" placeholder="E-mail" required>
+                    <img src="/static/images/logo.png" alt="Logo da F.G.K.B" class="img-login-logo">
 
-                    <input type="password" id="senha-login" name="senha" placeholder="Senha" required>
+                    <div class="div-login-inputs">
+                        <input type="email" id="email-login" name="email" placeholder="E-mail" 
+                        class="ant-input custom-input-editar" required>
 
-                    <div>
-                        <button type="button" onclick="openModalCriarConta()">Cadastrar</button>
-                        <button type="button" onclick="openModalRecuperarConta()">Recuperar</button>
-                        <button type="submit">Entrar</button>
+                        <input type="password" id="senha-login" name="senha" placeholder="Senha" 
+                        class="ant-input custom-input-editar" required>
+                    </div>
+
+                    <div class="div-login-btn">
+                        <button type="button" onclick="openModalCriarConta()" class="btn-cadastrar">Cadastrar</button>
+                        <button type="button" onclick="openModalRecuperarConta()" class="btn-recuperar">Recuperar</button>
+                        <button type="submit" class="btn-entrar">Entrar</button>
                     </div>
 
                 </div>
@@ -67,27 +66,38 @@
                 <h2>Criar Conta</h2>
 
                 <form id="criarContaForm" action="/criarConta" method="post">
-                    <input type="text" id="nome-cadastro" name="nome" placeholder="Nome"
-                           pattern="[A-Za-zÀ-ÿ\s]+" required
-                           title="Não utilize caracteres e números neste campo">
+                    <div class="conteiner-criar-conta-inputs">
+                        <div class="div-criar-conta-inputs">
+                            <input type="text" id="nome-cadastro" name="nome" placeholder="Nome"
+                                pattern="[A-Za-zÀ-ÿ\s]+" class="ant-input custom-input-editar" required
+                                title="Não utilize caracteres e números neste campo">
 
-                    <input type="text" id="sobrenome-cadastro" name="sobrenome" placeholder="Sobrenome"
-                           pattern="[A-Za-zÀ-ÿ\s]+" required
-                           title="Não utilize caracteres e números neste campo">
+                            <input type="text" id="sobrenome-cadastro" name="sobrenome" placeholder="Sobrenome"
+                                pattern="[A-Za-zÀ-ÿ\s]+" class="ant-input custom-input-editar" required
+                                title="Não utilize caracteres e números neste campo">
 
-                    <input type="tel" id="telefone-cadastro" onkeyup="formatarTelefone(this)" name="telefone"
-                           placeholder="Telefone" maxlength="11" minlength="11" required
-                           title="Número inválido">
+                            <input type="tel" id="telefone-cadastro" onkeyup="formatarTelefone(this)" name="telefone"
+                                placeholder="Telefone" maxlength="11" minlength="11" 
+                                class="ant-input custom-input-editar" required
+                                title="Número inválido">
+                        </div>
 
-                    <input type="email" id="email-cadastro" name="email" placeholder="E-mail"
-                           pattern="^(?!.*\.\.)([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+)\.([a-zA-Z]{2,})$" required
-                           title="E-mail inválido">
+                        <div class="div-criar-conta-inputs2">
+                            <input type="email" id="email-cadastro" name="email" placeholder="E-mail"
+                                pattern="^(?!.*\.\.)([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+)\.([a-zA-Z]{2,})$" 
+                                class="ant-input custom-input-editar" required
+                                title="E-mail inválido">
 
-                    <input type="password" id="senha" name="senha"
-                           placeholder="Senha"pattern=".{8,}" required
-                           title="A senha deve ter pelo menos 8 caracteres">
+                            <input type="password" id="senha" name="senha"
+                                placeholder="Senha"pattern=".{8,}" 
+                                class="ant-input custom-input-editar" required
+                                title="A senha deve ter pelo menos 8 caracteres">
+                        </div>
+                    </div>
 
-                    <button type="submit">Cadastrar</button>
+                    <div class="div-criar-conta-btn">
+                        <button type="submit" class="btn-cadastrar">Cadastrar</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -100,49 +110,20 @@
                 <h2>Recuperar Senha</h2>
 
                 <form id="recuperarContaForm" action="/recuperarConta" method="post">
-                           <input type="email" id="email-recuperar" name="email" placeholder="E-mail"
-                           pattern="^(?!.*\.\.)([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+)\.([a-zA-Z]{2,})$" required
-                           title="E-mail inválido">
+                    <div class="conteiner-recuperar-conta-inputs">
+                        <input type="email" id="email-recuperar" name="email" placeholder="E-mail"
+                        pattern="^(?!.*\.\.)([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+)\.([a-zA-Z]{2,})$" 
+                        class="ant-input custom-input-editar"required
+                        title="E-mail inválido">
 
-                    <button type="submit">Recuperar Senha</button>
+                        <button type="submit" class="btn-recuperar-senha-salvar">Recuperar Senha</button>
+                    </div>
                 </form>
             </div>
         </div>
         <!-- FIM MODAL RECUPERAR CONTA -->
-
     </section>
     <!--FIM CONTEUDO-->
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-    <!--INICIO RODAPÉ -->
-    <footer>
-        <div class="div-footer-logo">
-            <img src="/static/images/logo.png" alt="Logo da My Coding" class="img-footer-logo">
-
-            <a href="https://mycodinghub.tech/" target="_blank">
-                <img src="/static/images/logo-mycoding.png" alt="Logo da My Coding" class="img-footer-logo-mycoding">
-            </a>
-        </div>
-
-        <div>
-            <p>Todos os direitos reservados!</p>
-        </div>
-    </footer>
-    <!--FIM RODAPÉ -->
 
     <!-- Renderiza mensagem de sucesso -->
     <div th:if="${successMessage}">
