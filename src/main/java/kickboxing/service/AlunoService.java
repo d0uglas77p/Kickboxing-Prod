@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 @Service
 public class AlunoService {
@@ -32,6 +33,10 @@ public class AlunoService {
         }
 
         alunoRepository.save(aluno);
+    }
+
+    public List<Aluno> listarAlunos() {
+        return alunoRepository.findAll();
     }
 
     //* AMBIENTE DE PRODUÇÃO ACESSE O ARQUIVO ---- "PRODUCAO.MD" ---- *//

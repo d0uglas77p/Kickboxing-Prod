@@ -124,6 +124,20 @@
         <div class="conteiner-registros-professores">
             <h2>Registro de Professores</h2>
         </div>
+
+        <div class="conteiner-professores">
+            <ul>
+                <li th:each="professor : ${professores}">
+                    <span th:text="${professor.registroProfessor}"></span> -
+                    <span th:text="${professor.nomeProfessor}"></span> -
+                    <span th:text="${professor.cidadeProfessor}"></span> -
+                    <span th:text="${professor.graduacaoProfessor}"></span> -
+                    <span th:text="${professor.equipeProfessor}"></span> -
+                    <span th:text="${#temporals.format(professor.nascimentoProfessor, 'dd-MM-yyyy')}"></span>
+                    <img th:src="${professor.imagemProfessor}" alt="Imagem do professor" width="250">
+                </li>
+            </ul>
+        </div>
         <!--REGISTROS PROFESSORES-->
     </section>
     <!--FIM CONTEUDO-->

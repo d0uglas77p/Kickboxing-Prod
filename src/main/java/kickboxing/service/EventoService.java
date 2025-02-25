@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 @Service
 public class EventoService {
@@ -32,6 +33,10 @@ public class EventoService {
         }
 
         eventoRepository.save(evento);
+    }
+
+    public List<Evento> listarEventos() {
+        return eventoRepository.findAll();
     }
 
     //* AMBIENTE DE PRODUÇÃO ACESSE O ARQUIVO ---- "PRODUCAO.MD" ---- *//

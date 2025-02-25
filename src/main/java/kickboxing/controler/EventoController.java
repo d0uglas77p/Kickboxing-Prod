@@ -4,6 +4,7 @@ import kickboxing.model.Evento;
 import kickboxing.service.EventoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @Controller
 public class EventoController {
@@ -26,13 +28,6 @@ public class EventoController {
                               @RequestParam("horaEvento") String horaEvento,
                               @RequestParam("imagemEvento") MultipartFile imagemEvento,
                               RedirectAttributes redirectAttributes) {
-
-        System.out.println("Nome do Evento: " + nomeEvento);
-        System.out.println("Descrição: " + descricaoEvento);
-        System.out.println("Data: " + dataEvento);
-        System.out.println("Hora: " + horaEvento);
-        System.out.println("Imagem: " + imagemEvento.getOriginalFilename());
-
         try {
             Evento evento = new Evento();
             evento.setNomeEvento(nomeEvento);
@@ -41,8 +36,9 @@ public class EventoController {
             evento.setHoraEvento(LocalTime.parse(horaEvento));
 
             eventoService.salvarEvento(evento, imagemEvento);
+
             redirectAttributes.addFlashAttribute("successMessage", "Evento cadastrado com sucesso!");
-            return "redirect:/eventosAdm";
+            return "redirect:/eventosAdm?refresh=" + System.currentTimeMillis();
 
         } catch (IOException e) {
             redirectAttributes.addFlashAttribute("errorMessage", "Erro ao salvar a imagem: " + e.getMessage());
@@ -52,5 +48,11 @@ public class EventoController {
             redirectAttributes.addFlashAttribute("errorMessage", "Erro ao cadastrar evento: " + e.getMessage());
             return "redirect:/eventosAdm";
         }
+    }
+
+    public String listarEventos(Model model) {
+        List<Evento> eventos = eventoService.listarEventos();
+        model.addAttribute("eventos", eventos);
+        return "eventosAdm";
     }
 }

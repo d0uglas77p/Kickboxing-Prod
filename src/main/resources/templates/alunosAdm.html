@@ -128,6 +128,21 @@
         <div class="conteiner-registros-alunos">
             <h2>Registro de Alunos</h2>
         </div>
+
+        <div class="conteiner-alunos">
+            <ul>
+                <li th:each="aluno : ${alunos}">
+                    <span th:text="${aluno.registroAluno}"></span> -
+                    <span th:text="${aluno.nomeAluno}"></span> -
+                    <span th:text="${aluno.cidadeAluno}"></span> -
+                    <span th:text="${aluno.graduacaoAluno}"></span> -
+                    <span th:text="${aluno.academiaAluno}"></span> -
+                    <span th:text="${aluno.responsavelAluno}"></span> -
+                    <span th:text="${#temporals.format(aluno.nascimentoAluno, 'dd-MM-yyyy')}"></span>
+                    <img th:src="${aluno.imagemAluno}" alt="Imagem do aluno" width="250">
+                </li>
+            </ul>
+        </div>
         <!--REGISTROS ALUNOS-->
     </section>
     <!--FIM CONTEUDO-->
