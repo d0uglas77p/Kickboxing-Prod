@@ -79,27 +79,45 @@
         <!--CADASTRAR ALUNOS-->
         <div id="cadastrarAluno">
             <form action="/criarAluno" method="post" enctype="multipart/form-data">
-                <div>
+
+                <div class="cadastrar-aluno-h2">
                     <h2>CADASTRAR ALUNO</h2>
+                </div>
+                
+                <div class="conteiner-cadastrar-alunos">
+                    <div class="div-cadastrar-alunos-registro">
+                        <input type="text" id="registro-aluno" name="registroAluno" 
+                        placeholder="Registro do Aluno" class="ant-input ant-input custom-input-editar" required>
 
-                    <input type="text" id="registro-aluno" name="registroAluno" placeholder="Registro do Aluno" required>
+                        <input type="text" id="nome-aluno" name="nomeAluno" placeholder="Nome do Aluno" 
+                        class="ant-input ant-input custom-input-editar" required>
+                    </div>
 
-                    <input type="text" id="nome-aluno" name="nomeAluno" placeholder="Nome do Aluno" required>
+                    <div class="div-cadastrar-alunos-cidade">
+                        <input type="text" id="cidade-aluno" name="cidadeAluno" placeholder="Cidade do Aluno" 
+                        class="ant-input ant-input custom-input-editar" required>
 
-                    <input type="text" id="cidade-aluno" name="cidadeAluno" placeholder="Cidade do Aluno" required>
+                        <input type="text" id="graducacao-aluno" name="graduacaoAluno" 
+                        placeholder="Graduação do Aluno" class="ant-input ant-input custom-input-editar" required>
+                    </div>
 
-                    <input type="text" id="graducacao-aluno" name="graduacaoAluno" placeholder="Graduação do Aluno" required>
+                    <div class="div-cadastrar-alunos-academia">
+                        <input type="text" id="academia-aluno" name="academiaAluno" 
+                        placeholder="Academia do Aluno" class="ant-input ant-input custom-input-editar" required>
 
-                    <input type="text" id="academia-aluno" name="academiaAluno" placeholder="Academia do Aluno" required>
+                        <input type="text" id="responsavel-aluno" name="responsavelAluno" 
+                        placeholder="Responsável do Aluno" class="ant-input ant-input custom-input-editar" required>
+                    </div>
 
-                    <input type="text" id="responsavel-aluno" name="responsavelAluno" placeholder="Responsável do Aluno" required>
+                    <div class="div-cadastrar-alunos-nascimento">
+                        <input type="date" id="nascimento-aluno" name="nascimentoAluno" 
+                        class="ant-input ant-input custom-input-data" required>
 
-                    <input type="date" id="nascimento-aluno" name="nascimentoAluno" required>
-
-                    <input type="file" id="imagem-aluno" name="imagemAluno" accept="image/*" required>
-
+                        <input type="file" id="imagem-aluno" name="imagemAluno" accept="image/*"
+                        class="ant-input custom-input-upload" required>
+                    </div>
                     <div>
-                        <button type="submit">Cadastrar</button>
+                        <button type="submit" class="btn-cadastrar">Cadastrar</button>
                     </div>
                 </div>
             </form>
