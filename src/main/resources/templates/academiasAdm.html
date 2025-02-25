@@ -79,46 +79,63 @@
         <!--CADASTRAR ACADEMIAS-->
         <div id="cadastrarAcademia">
             <form action="/criarAcademia" method="post" enctype="multipart/form-data">
-                <div>
-                    <div class="cadastrar-academia-h2">
+                <div class="cadastrar-academia-h2">
                     <h2>CADASTRAR ACADEMIA</h2>
                 </div>
 
                 <div class="conteiner-cadastrar-academias">
                     <div class="div-cadastrar-academias-nomes">
-                        <input type="text" id="nome-academia" name="nomeAcademia" placeholder="Nome da Academia" 
-                        class="ant-input custom-input-editar" required>
+                        <input type="text" id="nome-academia" name="nomeAcademia" placeholder="Nome da Academia"
+                               class="ant-input custom-input-editar" required>
 
-                        <input type="text" id="responsavel-academia" name="responsavelAcademia" placeholder="Responsável Técnico" 
-                        class="ant-input custom-input-editar" required>
+                        <input type="text" id="responsavel-academia" name="responsavelAcademia" placeholder="Responsável Técnico"
+                               class="ant-input custom-input-editar" required>
                     </div>
 
                     <div class="div-cadastrar-academias-endereco">
-                        <input type="text" id="endereco-academia" name="enderecoAcademia" placeholder="Endereço Completo" 
-                        class="ant-input custom-input-editar" required>
+                        <input type="text" id="endereco-academia" name="enderecoAcademia" placeholder="Endereço Completo"
+                               class="ant-input custom-input-editar" required>
 
-                        <input type="text" id="cidade-academia" name="cidadeAcademia" placeholder="Cidade" 
-                        class="ant-input custom-input-editar" required>
+                        <input type="text" id="cidade-academia" name="cidadeAcademia" placeholder="Cidade"
+                               class="ant-input custom-input-editar" required>
                     </div>
                 </div>
 
                 <div class="div-cadastrar-academias-upload">
                     <input type="tel" id="contato-academia" onkeyup="formatarContato(this)" name="contatoAcademia"
-                           placeholder="Contato" maxlength="11" minlength="11" 
+                           placeholder="Contato" maxlength="11" minlength="11"
                            class="ant-input custom-input-telefone" required
                            title="Número inválido">
 
-                           <input type="file" id="imagem-academias" name="imagemAcademia" accept="image/*"
-                           class="ant-input custom-input-upload-academias" required>                   
+                    <input type="file" id="imagem-academias" name="imagemAcademia" accept="image/*"
+                           class="ant-input custom-input-upload-academias" required>
                 </div>
 
                 <div class="div-cadastrar-academias-btn">
                     <button type="submit" class="btn-cadastrar">Cadastrar</button>
                 </div>
-                
             </form>
         </div>
         <!--CADASTRAR ACADEMIAS-->
+
+        <!-- REGISTROS ACADEMIAS -->
+        <div class="conteiner-registros-academias">
+            <h2>Registro de Academias</h2>
+        </div>
+
+        <div class="conteiner-patrocinadores">
+            <ul>
+                <li th:each="academia : ${academias}">
+                    <span th:text="${academia.nomeAcademia}"></span> -
+                    <span th:text="${academia.responsavelAcademia}"></span> -
+                    <span th:text="${academia.enderecoAcademia}"></span> -
+                    <span th:text="${academia.cidadeAcademia}"></span> -
+                    <span th:text="${academia.contatoAcademia}"></span>
+                    <img th:src="${academia.imagemAcademia}" alt="Imagem da academia" width="250">
+                </li>
+            </ul>
+        </div>
+        <!-- REGISTROS ACADEMIAS -->
     </section>
     <!--FIM CONTEUDO-->
 

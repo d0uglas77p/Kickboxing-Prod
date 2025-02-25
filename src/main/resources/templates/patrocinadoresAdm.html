@@ -99,6 +99,22 @@
             </form>
         </div>
         <!--CADASTRAR PATROCINADOR-->
+
+        <!--REGISTROS PATROCINADORES-->
+        <div class="conteiner-registros-patrocinadores">
+            <h2>Registro de Patrocinadores</h2>
+        </div>
+
+        <div class="conteiner-patrocinadores">
+            <ul>
+                <li th:each="patrocinador : ${patrocinadores}">
+                    <a th:href="${patrocinador.linkPatrocinador}" target="_blank">
+                        <img th:src="${patrocinador.imagemPatrocinador}" alt="Patrocinador" width="150">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!--REGISTROS PATROCINADORES-->
     </section>
     <!--FIM CONTEUDO-->
 
