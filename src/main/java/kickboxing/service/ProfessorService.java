@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 @Service
 public class ProfessorService {
@@ -32,6 +33,10 @@ public class ProfessorService {
         }
 
         professorRepository.save(professor);
+    }
+
+    public List<Professor> listarProfessores() {
+        return professorRepository.findAll();
     }
 
     //* AMBIENTE DE PRODUÇÃO ACESSE O ARQUIVO ---- "PRODUCAO.MD" ---- *//

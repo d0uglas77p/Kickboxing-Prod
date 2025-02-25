@@ -24,6 +24,15 @@ public class MapearRotasController {
     @Autowired
     private AcademiaController academiaController;
 
+    @Autowired
+    private EventoController eventoController;
+
+    @Autowired
+    private AlunoController alunoController;
+
+    @Autowired
+    private ProfessorController professorController;
+
     @GetMapping("/index")
     public String indexPage() {
         return "index";
@@ -46,16 +55,34 @@ public class MapearRotasController {
         return null;
     }
 
-    @GetMapping("/alunosAdm")
-    public String alunosAdmPage(HttpSession session, RedirectAttributes redirectAttributes) {
+    @GetMapping("/professoresAdm")
+    public String professoresAdmPage(HttpSession session, RedirectAttributes redirectAttributes, Model model) {
         String redirecionamento = verificarSessao(session, redirectAttributes);
-        return redirecionamento != null ? redirecionamento : "alunosAdm";
+        if (redirecionamento != null) {
+            return redirecionamento;
+        }
+
+        return professorController.listarProfessores(model);
+    }
+
+    @GetMapping("/alunosAdm")
+    public String alunosAdmPage(HttpSession session, RedirectAttributes redirectAttributes, Model model) {
+        String redirecionamento = verificarSessao(session, redirectAttributes);
+        if (redirecionamento != null) {
+            return redirecionamento;
+        }
+
+        return alunoController.listarAlunos(model);
     }
 
     @GetMapping("/eventosAdm")
-    public String eventosAdm(HttpSession session, RedirectAttributes redirectAttributes) {
+    public String eventosAdm(HttpSession session, RedirectAttributes redirectAttributes, Model model) {
         String redirecionamento = verificarSessao(session, redirectAttributes);
-        return redirecionamento != null ? redirecionamento : "eventosAdm";
+        if (redirecionamento != null) {
+            return redirecionamento;
+        }
+
+        return eventoController.listarEventos(model);
     }
 
     @GetMapping("/academiasAdm")
@@ -76,12 +103,6 @@ public class MapearRotasController {
         }
 
         return patrocinadorController.listarPatrocinadores(model);
-    }
-
-    @GetMapping("/professoresAdm")
-    public String professoresAdmPage(HttpSession session, RedirectAttributes redirectAttributes) {
-        String redirecionamento = verificarSessao(session, redirectAttributes);
-        return redirecionamento != null ? redirecionamento : "professoresAdm";
     }
 
     @GetMapping("/rankingAdm")

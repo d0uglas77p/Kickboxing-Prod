@@ -118,6 +118,18 @@
         <div class="conteiner-registros-eventos">
             <h2>Registro de Eventos</h2>
         </div>
+
+        <div class="conteiner-eventos">
+            <ul>
+                <li th:each="evento : ${eventos}">
+                    <span th:text="${evento.nomeEvento}"></span> -
+                    <span th:text="${evento.descricaoEvento}"></span> -
+                    <span th:text="${#temporals.format(evento.dataEvento, 'dd-MM-yyyy')}"></span>
+                    <span th:text="${evento.horaEvento}"></span> -
+                    <img th:src="${evento.imagemEvento}" alt="Imagem do evento" width="250">
+                </li>
+            </ul>
+        </div>
         <!--REGISTROS EVENTOS-->
     </section>
     <!--FIM CONTEUDO-->
