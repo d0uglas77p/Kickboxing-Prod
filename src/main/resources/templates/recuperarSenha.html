@@ -28,38 +28,22 @@
 
 <body>
     <form id="recuperarSenhaForm" action="/atualizarSenha" method="POST">
-        <div class="conteiner-recuperar">
-            <div >
-                <h2>Sua nova senha</h2>
+        <div class="conteiner-recuperar-conta-inputs">        
+            <img src="/static/images/logo.png" alt="Logo da F.G.K.B" class="img-login-logo">
 
-                <input type="hidden" name="token" th:value="${token}">
+            <h2>Sua nova senha</h2>
 
-                <input type="password" id="senha-recuperar-conta" name="senha" placeholder="Senha"
-                       pattern=".{8,}" required title="A senha deve ter pelo menos 8 caracteres"
-                       autocomplete="new-password" autocorrect="off" spellcheck="false" class="ant-input custom-input">
+            <input type="hidden" name="token" th:value="${token}">
 
-                <div>
-                    <button type="submit">Redefinir Senha</button>
-                </div>
+            <input type="password" id="senha-recuperar-conta" name="senha" placeholder="Senha"
+                    pattern=".{8,}" required title="A senha deve ter pelo menos 8 caracteres"
+                    autocomplete="new-password" autocorrect="off" spellcheck="false" class="ant-input custom-input">
+
+            <div>
+                <button type="submit" class="btn-recuperar">Recuperar </button>
             </div>
         </div>
     </form>
-
-    <!--INICIO RODAPÉ -->
-    <footer>
-        <div class="div-footer-logo">
-            <img src="/static/images/logo.png" alt="Logo da F.G.K.B" class="img-footer-logo">
-
-            <a href="https://mycodinghub.tech/" target="_blank">
-                <img src="/static/images/logo-mycoding.png" alt="Logo da My Coding" class="img-footer-logo-mycoding">
-            </a>
-        </div>
-
-        <div>
-            <p>Todos os direitos reservados!</p>
-        </div>
-    </footer>
-    <!--FIM RODAPÉ -->
 
 <div th:if="${successMessage}">
     <script th:inline="javascript">

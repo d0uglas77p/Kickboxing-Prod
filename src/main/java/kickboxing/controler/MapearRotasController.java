@@ -18,6 +18,12 @@ public class MapearRotasController {
     @Autowired
     private AdminService adminService;
 
+    @Autowired
+    private PatrocinadorController patrocinadorController;
+
+    @Autowired
+    private AcademiaController academiaController;
+
     @GetMapping("/index")
     public String indexPage() {
         return "index";
@@ -40,12 +46,6 @@ public class MapearRotasController {
         return null;
     }
 
-    @GetMapping("/academiasAdm")
-    public String academiasAdmPage(HttpSession session, RedirectAttributes redirectAttributes) {
-        String redirecionamento = verificarSessao(session, redirectAttributes);
-        return redirecionamento != null ? redirecionamento : "academiasAdm";
-    }
-
     @GetMapping("/alunosAdm")
     public String alunosAdmPage(HttpSession session, RedirectAttributes redirectAttributes) {
         String redirecionamento = verificarSessao(session, redirectAttributes);
@@ -58,10 +58,24 @@ public class MapearRotasController {
         return redirecionamento != null ? redirecionamento : "eventosAdm";
     }
 
-    @GetMapping("/patrocinadoresAdm")
-    public String patrocinadoresAdmPage(HttpSession session, RedirectAttributes redirectAttributes) {
+    @GetMapping("/academiasAdm")
+    public String academiasAdmPage(HttpSession session, RedirectAttributes redirectAttributes, Model model) {
         String redirecionamento = verificarSessao(session, redirectAttributes);
-        return redirecionamento != null ? redirecionamento : "patrocinadoresAdm";
+        if (redirecionamento != null) {
+            return redirecionamento;
+        }
+
+        return academiaController.listarAcademias(model);
+    }
+
+    @GetMapping("/patrocinadoresAdm")
+    public String patrocinadoresAdmPage(HttpSession session, RedirectAttributes redirectAttributes, Model model) {
+        String redirecionamento = verificarSessao(session, redirectAttributes);
+        if (redirecionamento != null) {
+            return redirecionamento;
+        }
+
+        return patrocinadorController.listarPatrocinadores(model);
     }
 
     @GetMapping("/professoresAdm")

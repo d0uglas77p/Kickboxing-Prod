@@ -300,12 +300,13 @@ html {
     color: #000;
 }
 
-.conteiner-recuperar-conta-inputs {
+.conteiner-recuperar-conta-inputs{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    width: 100%;
+    margin-top: 100px;
     gap: 20px;
 }
 
@@ -553,6 +554,24 @@ html {
 }
 /* CADASTRAR EVENTOS */
 
+/* REGISTROS EVENTOS */
+.conteiner-registros-eventos {
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #006aff;
+}
+
+.conteiner-registros-eventos h2 {
+    color: white;
+    display: flex;
+    margin-top: 5px;
+}
+/* REGISTRO EVENTOS */
+
 /* CADASTRAR PATROCINADORES */
 
 .conteiner-cadastrar-patrocinadores {
@@ -582,6 +601,24 @@ html {
     align-items: center;
 }
 /* CADASTRAR PATROCINADORES */
+
+/* REGISTROS PATROCINADORES */
+.conteiner-registros-patrocinadores {
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #006aff;
+}
+
+.conteiner-registros-patrocinadores h2 {
+    color: white;
+    display: flex;
+    margin-top: 5px;
+}
+/* REGISTRO PATROCINADORES */
 
 /* CADASTRAR ACADEMIAS */
 .cadastrar-academia-h2 {
@@ -646,6 +683,24 @@ html {
 }
 /* CADASTRAR ACADEMIAS */
 
+/* REGISTROS ACADEMIAS */
+.conteiner-registros-academias {
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #006aff;
+}
+
+.conteiner-registros-academias h2 {
+    color: white;
+    display: flex;
+    margin-top: 5px;
+}
+/* REGISTRO ACADEMIAS */
+
 /* CADASTRAR PROFESSORES */
 .conteiner-cadastrar-professores {
     width: 100%;
@@ -699,6 +754,24 @@ html {
 }
 /* CADASTRAR PROFESSORES */
 
+/* REGISTROS PROFESSORES */
+.conteiner-registros-professores {
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #006aff;
+}
+
+.conteiner-registros-professores h2 {
+    color: white;
+    display: flex;
+    margin-top: 5px;
+}
+/* REGISTRO PROFESSORES */
+
 /* CADASTRAR ALUNOS */
 .cadastrar-aluno-h2 {
     width: 100%;
@@ -747,7 +820,23 @@ html {
 }
 /* CADASTRAR ALUNOS */
 
+/* REGISTROS ALUNOS */
+.conteiner-registros-alunos {
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #006aff;
+}
 
+.conteiner-registros-alunos h2 {
+    color: white;
+    display: flex;
+    margin-top: 5px;
+}
+/* REGISTRO ALUNOS */
 
 /* INICIO FOOTER */
 footer {

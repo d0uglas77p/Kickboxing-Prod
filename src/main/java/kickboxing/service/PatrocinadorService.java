@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 @Service
 public class PatrocinadorService {
@@ -32,6 +33,10 @@ public class PatrocinadorService {
         }
 
         patrocinadorRepository.save(patrocinador);
+    }
+
+    public List<Patrocinador> listarPatrocinadores() {
+        return patrocinadorRepository.findAll();
     }
 
     //* AMBIENTE DE PRODUÇÃO ACESSE O ARQUIVO ---- "PRODUCAO.MD" ---- *//
