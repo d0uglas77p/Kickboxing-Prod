@@ -113,6 +113,92 @@ html {
 
 /* INICIO CONTEUDO */
 
+/* LOGIN ADMNISTRATIVA */
+#loginAdmin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%; /* Tira a altura fixa para usar toda a tela */
+}
+
+.conteiner-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 100px;
+    gap: 20px;
+}
+
+.div-login-inputs {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.img-login-logo {
+    padding: 0;
+    width: 300px;
+    height: auto;
+}
+
+.div-login-btn {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-cadastrar {
+    border: none;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: bold;
+    width: 90px;
+    height: 30px;
+    color: white;
+    background-color: #00c8ff;
+    cursor: pointer;
+    text-align: center; 
+    line-height: 20px; 
+}
+
+.btn-recuperar {
+    border: none;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: bold;
+    width: 95px;
+    height: 30px;
+    color: white;
+    background-color: #00c8ff;
+    cursor: pointer;
+    text-align: center; 
+    line-height: 30px; 
+}
+
+.btn-entrar {
+    border: none;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: bold;
+    width: 70px;
+    height: 30px;
+    color: white;
+    background-color: #00c8ff;
+    cursor: pointer;
+    text-align: center; 
+    line-height: 30px; 
+}
+
+.btn-entrar:hover,
+.btn-recuperar:hover,
+.btn-cadastrar:hover {
+    background-color: #006aff;
+}
+/* LOGIN ADMNISTRATIVA */
+
 /* MODAL CRIAR CONTA */
 .modal-criar-conta {
     display: none;
@@ -145,6 +231,38 @@ html {
 
 .close-criar-conta:hover {
     color: #000;
+}
+
+.conteiner-criar-conta-inputs {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.div-criar-conta-inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.div-criar-conta-inputs2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;btn-cadastrar
+}
+
+.div-criar-conta-btn {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 100px;
+    margin-top: 20px;
 }
 /* MODAL CRIAR CONTA */
 
@@ -180,6 +298,34 @@ html {
 
 .close-recuperar-conta:hover {
     color: #000;
+}
+
+.conteiner-recuperar-conta-inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.btn-recuperar-senha-salvar {
+    border: none;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: bold;
+    width: 95px;
+    height: 30px;
+    color: white;
+    background-color: #00c8ff;
+    cursor: pointer;
+    text-align: center; 
+    line-height: 30px; 
+}
+
+
+.btn-recuperar-senha-salvar:hover {
+    background-color: #006aff;
 }
 /* MODAL RECUPERAR CONTA */
 
@@ -257,6 +403,7 @@ html {
 .custom-input-editar {
     width: 250px;
     font-size: 14px;
+    border: 1px solid #aaa;
 }
 
 .ant-input-editar::placeholder {
@@ -312,6 +459,7 @@ html {
 .custom-input {
     width: 200px;
     font-size: 14px;
+    border: 1px solid #aaa;
 }
 
 .ant-input::placeholder {
@@ -320,6 +468,183 @@ html {
 
 /* MODAL SENHA CONTA */
 /* MODAL EDITAR CONTA */
+
+/* CADASTRAR EVENTOS */
+.cadastrar-evento-h2 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.conteiner-cadastrar-eventos {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.div-cadastrar-eventos-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.div-cadastrar-eventos-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.div-cadastrar-eventos-upload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-right: 15px;
+    gap: 30px;
+}
+
+.div-cadastrar-eventos-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#descricao-evento {
+    resize: none;
+}
+
+.custom-input-text-area {
+    width: 250px;
+    height: 100px !important;
+    font-size: 14px;
+    border: 1px solid #aaa;
+}
+
+.custom-input-data {
+    width: 160px;
+    font-size: 14px;
+    border: 1px solid #aaa;
+}
+
+.custom-input-hora {
+    width: 70px;
+    font-size: 14px;
+    border: 1px solid #aaa;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-input-upload {
+    width: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* CADASTRAR EVENTOS */
+
+/* CADASTRAR PATROCINADORES */
+
+.conteiner-cadastrar-patrocinadores {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.div-cadastrar-patrocinadores-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.custom-input-redirecionamento {
+    width: 310px;
+    font-size: 14px;
+    border: 1px solid #aaa;
+}
+
+.custom-input-upload-patrocinadores {
+    width: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* CADASTRAR PATROCINADORES */
+
+/* CADASTRAR ACADEMIAS */
+.cadastrar-academia-h2 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.conteiner-cadastrar-academias {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.div-cadastrar-academias-nomes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.div-cadastrar-academias-endereco {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.div-cadastrar-academias-upload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+    margin-right: 30px;
+}
+
+.div-cadastrar-academias-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.custom-input-telefone {
+    width: 150px;
+    font-size: 14px;
+    border: 1px solid #aaa;
+}
+
+.custom-input-upload-academias {
+    width: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* CADASTRAR ACADEMIAS */
+
 
 
 /* INICIO FOOTER */
@@ -332,7 +657,8 @@ footer {
     align-items: center;
     flex-direction: column;
     color: #FFFFFF;
-    gap: 50px;
+    gap: 20px;
+    margin-top: 40px;
 }
 
 footer a {
