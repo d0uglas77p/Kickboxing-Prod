@@ -119,7 +119,7 @@ html {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100%; /* Tira a altura fixa para usar toda a tela */
+    height: 100%;
 }
 
 .conteiner-login {
@@ -300,13 +300,13 @@ html {
     color: #000;
 }
 
-.conteiner-recuperar-conta-inputs{
+.conteiner-recuperar-conta-inputs {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin-top: 100px;
+    margin-top: 20px;
     gap: 20px;
 }
 
@@ -329,6 +329,26 @@ html {
     background-color: #006aff;
 }
 /* MODAL RECUPERAR CONTA */
+
+/* MODAL RECUPERAR SENHA PAGINA */
+#recuperarSenhaForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.conteiner-recuperar-conta-pagina {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}
+
+/* MODAL RECUPERAR SENHA PAGINA */
 
 /* MODAL EDITAR CONTA */
 .modal-editar-conta {
@@ -477,7 +497,7 @@ html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 .conteiner-cadastrar-eventos {
@@ -573,7 +593,6 @@ html {
 /* REGISTRO EVENTOS */
 
 /* CADASTRAR PATROCINADORES */
-
 .conteiner-cadastrar-patrocinadores {
     display: flex;
     justify-content: center;
@@ -610,7 +629,7 @@ html {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: #006aff;
+    background-color: #181818;
 }
 
 .conteiner-registros-patrocinadores h2 {
@@ -618,6 +637,56 @@ html {
     display: flex;
     margin-top: 5px;
 }
+
+.conteiner-patrocinadores ul {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    list-style: none;
+    padding: 0;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.conteiner-patrocinadores li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    flex: 1 1 calc(16.66% - 50px);
+    max-width: calc(16.66% - 50px);
+    box-sizing: border-box;
+}
+
+.conteiner-patrocinadores img {
+    transition: transform 0.3s ease-in-out;
+}
+
+.conteiner-patrocinadores img:hover {
+    transform: scale(1.2);
+}
+
+.icon-lixo {
+    color: #fd3434;
+    font-size: 25px;
+    height: auto;
+    cursor: pointer;
+    margin-top: 30px;
+    border: none;
+    background: none;
+    outline: none;
+    transition: transform 0.1s ease-in-out;
+}
+
+.icon-lixo:hover {
+    transform: scale(1.3); 
+}
+
 /* REGISTRO PATROCINADORES */
 
 /* CADASTRAR ACADEMIAS */
