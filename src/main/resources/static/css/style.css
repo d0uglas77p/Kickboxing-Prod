@@ -558,7 +558,7 @@ html {
 }
 
 .custom-input-hora {
-    width: 70px;
+    width: 90px;
     font-size: 14px;
     border: 1px solid #aaa;
     justify-content: center;
@@ -582,7 +582,7 @@ html {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: #006aff;
+    background-color: #181818;
 }
 
 .conteiner-registros-eventos h2 {
@@ -591,31 +591,130 @@ html {
     margin-top: 5px;
 }
 
-.conteiner-eventos ul{
+.conteiner-eventos ul {
+    width: 80%;
     display: flex;
     justify-content: center;
-    align-items: flex-end;
-    gap: 20px;
-    width 80%;
-    margin-top: 40px;
+    align-items: flex-start;
     list-style: none;
     padding: 0;
+    margin-top: 40px;
     margin-left: auto;
     margin-right: auto;
+    gap: 50px;
     flex-wrap: wrap;
 }
 
-.conteiner-eventos li{
+.conteiner-eventos li {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
-    flex: 1 1 calc(16.66% - 50px);
-    max-width: calc(16.66% - 50px);
+    flex: 1 1 calc(16.66% - 30px);
+    max-width: calc(16.66% - 30px);
     box-sizing: border-box;
+    text-align: center;
 }
 
+.conteiner-eventos img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+}
+
+.conteiner-eventos img:hover {
+    transform: scale(1.2);
+    margin-bottom: 20px;
+}
+
+.span-nomeEvento {
+    margin-top: 5px;
+    font-size: 16px !important;
+    font-weight: bold;
+}
+
+.span-descricaoEvento {
+    margin-top: 5px !important;
+    font-size: 14px !important;
+    font-weight: italic !important;
+}
+
+.data-evento {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    gap: 5px;
+    color: #006aff;
+}
+
+.hora-evento {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    color: #006aff;
+}
+
+.icon-lixo-eventos {
+    color: #fd3434;
+    font-size: 20px;
+    height: auto;
+    cursor: pointer;
+    margin-top: 10px;
+    border: none;
+    background: none;
+    outline: none;
+    transition: transform 0.1s ease-in-out;
+}
+
+.icon-lixo-eventos:hover {
+    transform: scale(1.3);
+}
+
+/* IMAGEM NO MODAL EVENTO */
+.imagem-evento-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagem-evento-modal-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.imagem-evento-modal-content img {
+    width: 400px;
+    height: auto;
+}
+
+.close-imagem-evento-modal {
+    color: #fff;
+    font-size: 40px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.close-imagem-evento-modal:hover {
+    color: #bbb;
+}
+/* IMAGEM NO MODAL EVENTO */
 /* REGISTRO EVENTOS */
 
 /* CADASTRAR PATROCINADORES */
@@ -699,7 +798,7 @@ html {
 
 .icon-lixo {
     color: #fd3434;
-    font-size: 25px;
+    font-size: 20px;
     height: auto;
     cursor: pointer;
     margin-top: 30px;

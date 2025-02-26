@@ -91,3 +91,24 @@ document.getElementById("contato-academia").addEventListener("input", function (
         this.setCustomValidity("");
     }
 });
+
+function openModalImagemEvento(imgSrc) {
+    const modal = document.getElementById("imagemEventoModal");
+    const modalImage = document.getElementById("imagemEventoModalImage");
+
+    modalImage.src = imgSrc;
+
+    modal.style.display = "block";
+}
+
+function closeModalImagemEvento() {
+    const modal = document.getElementById("imagemEventoModal");
+    modal.style.display = "none";
+}
+
+window.onclick = function (event) {
+    let modal = document.getElementById("imagemEventoModal");
+    if (event.target === modal) {
+        closeModalImagemEvento();
+    }
+};

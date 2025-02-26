@@ -108,6 +108,7 @@
         <div class="conteiner-patrocinadores">
             <ul>
                 <li th:each="patrocinador : ${patrocinadores}">
+
                     <a th:href="${patrocinador.linkPatrocinador}" target="_blank">
                         <img th:src="${patrocinador.imagemPatrocinador}" alt="Patrocinador" width="120">
                     </a>
