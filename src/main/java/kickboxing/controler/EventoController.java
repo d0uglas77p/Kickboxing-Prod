@@ -5,6 +5,7 @@ import kickboxing.service.EventoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -55,4 +56,17 @@ public class EventoController {
         model.addAttribute("eventos", eventos);
         return "eventosAdm";
     }
+
+    @PostMapping("/eventos/{id}")
+    public String excluirEvento(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+        try {
+            eventoService.excluirEvento(id);
+            redirectAttributes.addFlashAttribute("successMessage", "Evento excluído com sucesso!");
+
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Erro ao excluir Evento: " + e.getMessage());
+        }
+        return "redirect:/eventosAdm";
+    }
+
 }

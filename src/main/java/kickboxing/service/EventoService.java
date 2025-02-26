@@ -1,6 +1,7 @@
 package kickboxing.service;
 
 import kickboxing.model.Evento;
+import kickboxing.model.Patrocinador;
 import kickboxing.repository.EventoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,19 @@ public class EventoService {
 
     public List<Evento> listarEventos() {
         return eventoRepository.findAll();
+    }
+
+    public void excluirEvento(Long id) {
+        Evento evento = eventoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Evento não encontrado"));
+
+        // Remover imagem
+        File imagem = new File(System.getProperty("user.dir") + "/src/main/resources/static" + evento.getImagemEvento());
+        if (imagem.exists()) {
+            imagem.delete();
+        }
+
+        eventoRepository.deleteById(id);
     }
 
     //* AMBIENTE DE PRODUÇÃO ACESSE O ARQUIVO ---- "PRODUCAO.MD" ---- *//
