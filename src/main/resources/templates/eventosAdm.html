@@ -119,6 +119,25 @@
             <h2>Registro de Eventos</h2>
         </div>
 
+        <div class="div-calendario-h2">
+            <h2>Calendário 2025</h2>
+        </div>
+
+        <div class="conteiner-calendario">
+            <button onclick="filtrarEventos(1)">JAN</button>
+            <button onclick="filtrarEventos(2)">FEV</button>
+            <button onclick="filtrarEventos(3)">MAR</button>
+            <button onclick="filtrarEventos(4)">ABR</button>
+            <button onclick="filtrarEventos(5)">MAI</button>
+            <button onclick="filtrarEventos(6)">JUN</button>
+            <button onclick="filtrarEventos(7)">JUL</button>
+            <button onclick="filtrarEventos(8)">AGO</button>
+            <button onclick="filtrarEventos(9)">SET</button>
+            <button onclick="filtrarEventos(10)">OUT</button>
+            <button onclick="filtrarEventos(11)">NOV</button>
+            <button onclick="filtrarEventos(12)">DEZ</button>
+        </div>
+
         <div class="conteiner-eventos">
             <ul>
                 <li th:each="evento : ${eventos}">
@@ -147,7 +166,6 @@
                             </button>
                         </div>
                     </form>
-
                 </li>
             </ul>
         </div>
@@ -204,28 +222,6 @@
             });
         </script>
     </div>
-    <!-- POPUP DE CONFIRMAR EXCLUSÃO ESTILIZADO -->
-    <script>
-        document.querySelectorAll(".icon-lixo-eventos").forEach(button => {
-            button.addEventListener("click", function () {
-                let eventoId = this.getAttribute("data-id");
-                Swal.fire({
-                    title: "Tem certeza?",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#d33",
-                    cancelButtonColor: "#3085d6",
-                    confirmButtonText: "Sim, excluir!",
-                    cancelButtonText: "Cancelar"
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        document.getElementById("formExcluir_" + eventoId).submit();
-                    }
-                });
-            });
-        });
-    </script>
-    <!-- Sweet Alert Componentes UI -->
 
     <script src="/static/js/javascript.js"></script>
 </body>

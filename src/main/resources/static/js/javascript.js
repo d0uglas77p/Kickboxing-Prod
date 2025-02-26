@@ -1,3 +1,7 @@
+document.addEventListener("DOMContentLoaded", function () {
+    filtrarEventos("01");
+});
+
 function openModalCriarConta() {
     document.getElementById("criarContaModal").style.display = "block";
 }
@@ -112,3 +116,85 @@ window.onclick = function (event) {
         closeModalImagemEvento();
     }
 };
+
+function filtrarEventos(mes) {
+    fetch('/filtrar?mes=' + mes)
+        .then(response => response.json())
+        .then(eventos => {
+            let containerEventos = document.querySelector(".conteiner-eventos ul");
+            containerEventos.innerHTML = "";
+
+            eventos.forEach(evento => {
+                let eventoItem = document.createElement("li");
+
+                let img = document.createElement("img");
+                img.src = evento.imagemEvento;
+                img.alt = "Imagem do evento";
+                img.width = 200;
+                img.onclick = () => openModalImagemEvento(img.src);
+
+                let nomeSpan = document.createElement("span");
+                nomeSpan.textContent = evento.nomeEvento;
+                nomeSpan.classList.add("span-nomeEvento");
+
+                let descSpan = document.createElement("span");
+                descSpan.textContent = evento.descricaoEvento;
+                descSpan.classList.add("span-descricaoEvento");
+
+                let dataDiv = document.createElement("div");
+                dataDiv.classList.add("data-evento");
+                dataDiv.innerHTML = `<span>Data:</span> <span>${evento.dataEvento}</span>`;
+
+                let horaDiv = document.createElement("div");
+                horaDiv.classList.add("hora-evento");
+                horaDiv.innerHTML = `<span>Hora:</span> <span>${evento.horaEvento}</span>`;
+
+                let formExcluir = document.createElement("form");
+                formExcluir.id = `formExcluir_${evento.idEvento}`;
+                formExcluir.action = `/eventos/${evento.idEvento}`;
+                formExcluir.method = "post";
+
+                let inputHidden = document.createElement("input");
+                inputHidden.type = "hidden";
+                inputHidden.name = "_method";
+                inputHidden.value = "DELETE";
+
+                let divExcluir = document.createElement("div");
+                let btnExcluir = document.createElement("button");
+                btnExcluir.type = "button";
+                btnExcluir.classList.add("icon-lixo-eventos");
+                btnExcluir.setAttribute("data-id", evento.idEvento);
+                btnExcluir.innerHTML = `<i class="fa-solid fa-trash"></i>`;
+
+                btnExcluir.addEventListener("click", function () {
+                    Swal.fire({
+                        title: "Tem certeza?",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#d33",
+                        cancelButtonColor: "#3085d6",
+                        confirmButtonText: "Sim, excluir!",
+                        cancelButtonText: "Cancelar"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            document.getElementById(`formExcluir_${evento.idEvento}`).submit();
+                        }
+                    });
+                });
+
+                divExcluir.appendChild(btnExcluir);
+                formExcluir.appendChild(inputHidden);
+                formExcluir.appendChild(divExcluir);
+
+                eventoItem.appendChild(img);
+                eventoItem.appendChild(nomeSpan);
+                eventoItem.appendChild(descSpan);
+                eventoItem.appendChild(dataDiv);
+                eventoItem.appendChild(horaDiv);
+                eventoItem.appendChild(formExcluir);
+
+                containerEventos.appendChild(eventoItem);
+            });
+        })
+    .catch(error => console.error("Erro ao buscar eventos:", error));
+}
