@@ -590,6 +590,32 @@ html {
     display: flex;
     margin-top: 5px;
 }
+
+.conteiner-eventos ul{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 20px;
+    width 80%;
+    margin-top: 40px;
+    list-style: none;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+    flex-wrap: wrap;
+}
+
+.conteiner-eventos li{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    flex: 1 1 calc(16.66% - 50px);
+    max-width: calc(16.66% - 50px);
+    box-sizing: border-box;
+}
+
 /* REGISTRO EVENTOS */
 
 /* CADASTRAR PATROCINADORES */

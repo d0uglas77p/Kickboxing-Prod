@@ -122,14 +122,53 @@
         <div class="conteiner-eventos">
             <ul>
                 <li th:each="evento : ${eventos}">
+                    <img th:src="${evento.imagemEvento}" alt="Imagem do evento" width="200">
                     <span th:text="${evento.nomeEvento}"></span> -
                     <span th:text="${evento.descricaoEvento}"></span> -
                     <span th:text="${#temporals.format(evento.dataEvento, 'dd-MM-yyyy')}"></span>
                     <span th:text="${evento.horaEvento}"></span> -
-                    <img th:src="${evento.imagemEvento}" alt="Imagem do evento" width="250">
+
+                    <form th:id="'formExcluir_' + ${evento.idEvento}"
+                          th:action="@{/eventos/{id}(id=${evento.idEvento})}"
+                          method="post">
+
+                        <input type="hidden" name="_method" value="DELETE">
+
+                        <button type="button" class="icon-lixo" th:attr="data-id=${evento.idEvento}">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </form>
                 </li>
             </ul>
         </div>
+
+<!--        &lt;!&ndash;REGISTROS PATROCINADORES&ndash;&gt;-->
+<!--        <div class="conteiner-registros-patrocinadores">-->
+<!--            <h2>Registro de Patrocinadores</h2>-->
+<!--        </div>-->
+
+<!--        <div class="conteiner-patrocinadores">-->
+<!--            <ul>-->
+<!--                <li th:each="patrocinador : ${patrocinadores}">-->
+<!--                    <a th:href="${patrocinador.linkPatrocinador}" target="_blank">-->
+<!--                        <img th:src="${patrocinador.imagemPatrocinador}" alt="Patrocinador" width="120">-->
+<!--                    </a>-->
+
+<!--                    <form th:id="'formExcluir_' + ${patrocinador.idPatrocinador}"-->
+<!--                          th:action="@{/patrocinadores/{id}(id=${patrocinador.idPatrocinador})}"-->
+<!--                          method="post">-->
+
+<!--                        <input type="hidden" name="_method" value="DELETE">-->
+
+<!--                        <button type="button" class="icon-lixo" th:attr="data-id=${patrocinador.idPatrocinador}">-->
+<!--                            <i class="fa-solid fa-trash"></i>-->
+<!--                        </button>-->
+<!--                    </form>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        &lt;!&ndash;REGISTROS PATROCINADORES&ndash;&gt;-->
+
         <!--REGISTROS EVENTOS-->
     </section>
     <!--FIM CONTEUDO-->
@@ -189,6 +228,30 @@
             });
         </script>
     </div>
+    <!-- POPUP DE CONFIRMAR EXCLUSÃO ESTILIZADO -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".icon-lixo").forEach(button => {
+                button.addEventListener("click", function () {
+                    let eventoId = this.getAttribute("data-id");
+                    Swal.fire({
+                        title: "Tem certeza?",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#d33",
+                        cancelButtonColor: "#3085d6",
+                        confirmButtonText: "Sim, excluir!",
+                        cancelButtonText: "Cancelar"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            document.getElementById("formExcluir_" + eventoId).submit();
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+    <!-- Sweet Alert Componentes UI -->
 
     <script src="/static/js/javascript.js"></script>
 </body>
