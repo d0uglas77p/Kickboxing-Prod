@@ -68,5 +68,4 @@ public class EventoController {
         }
         return "redirect:/eventosAdm";
     }
-
 }
