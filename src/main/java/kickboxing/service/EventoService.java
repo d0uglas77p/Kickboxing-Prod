@@ -53,6 +53,14 @@ public class EventoService {
         eventoRepository.deleteById(id);
     }
 
+    public EventoService(EventoRepository eventoRepository) {
+        this.eventoRepository = eventoRepository;
+    }
+
+    public List<Evento> listarEventosPorMes(int mes) {
+        return eventoRepository.findByMes(mes);
+    }
+
     //* AMBIENTE DE PRODUÇÃO ACESSE O ARQUIVO ---- "PRODUCAO.MD" ---- *//
     //* IMPORTANTE PARA ENTENDER COMO VAI FUNCIONAR!!!!!!! *//
 }
