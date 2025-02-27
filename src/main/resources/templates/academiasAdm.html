@@ -68,7 +68,7 @@
         </div>
         <div>
             <form action="/logout" method="post">
-                <button type="submit" class="btn-nav-sair">Sair</button>
+                <button type="submit" class="ant-input custom-btn-sair">Sair</button>
             </form>
         </div>
     </nav>
@@ -112,7 +112,7 @@
                 </div>
 
                 <div class="div-cadastrar-academias-btn">
-                    <button type="submit" class="btn-cadastrar">Cadastrar</button>
+                    <button type="submit" class="anti-input custom-btn-cadastrar-academia">Cadastrar</button>
                 </div>
             </form>
         </div>
@@ -123,10 +123,19 @@
             <h2>Registro de Academias</h2>
         </div>
 
+        <div class="conteiner-pesquisar">
+            <select class="ant-input" name="opcoes-cidades">
+                <option value="">Selecionar Cidade</option>
+                <option th:each="cidade : ${cidades}" th:value="${cidade}" th:text="${cidade}"></option>
+            </select>
+
+            <button class="ant-input custom-btn-pesquisar">Pesquisar</button>
+        </div>
+
         <div class="conteiner-academias">
             <ul>
                 <li th:each="academia : ${academias}">
-                    <img th:src="${academia.imagemAcademia}" alt="Imagem da academia"
+                    <img th:src="${academia.imagemAcademia}" alt="Imagem da academia" width="200"
                          onclick="openModalImagemAcademia(this.src)">
 
                     <div class="div-info-academias">

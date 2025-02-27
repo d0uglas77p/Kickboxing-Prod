@@ -21,7 +21,7 @@
     <link href="https://cdn.jsdelivr.net/npm/antd@4.18.6/dist/antd.min.css" rel="stylesheet">
 
     <!-- CSS do projeto -->
-    <link href="/static/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 
     <title>Recuperar Senha</title>
 </head>
@@ -41,7 +41,7 @@
                     autocomplete="new-password" autocorrect="off" spellcheck="false" class="ant-input custom-input">
 
             <div>
-                <button type="submit" class="btn-recuperar">Recuperar </button>
+                <button type="submit" class="ant-input custom-btn-recuperar">Recuperar </button>
             </div>
         </div>
     </form>

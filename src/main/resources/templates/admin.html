@@ -24,7 +24,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- CSS do projeto -->
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 
     <title>Login Administrativo</title>
 </head>
@@ -49,9 +49,9 @@
                     </div>
 
                     <div class="div-login-btn">
-                        <button type="button" onclick="openModalCriarConta()" class="btn-cadastrar">Cadastrar</button>
-                        <button type="button" onclick="openModalRecuperarConta()" class="btn-recuperar">Recuperar</button>
-                        <button type="submit" class="btn-entrar">Entrar</button>
+                        <button type="button" onclick="openModalCriarConta()" class="ant-input custom-btn-cadastrar">Cadastrar</button>
+                        <button type="button" onclick="openModalRecuperarConta()" class="ant-input custom-btn-recuperar">Recuperar</button>
+                        <button type="submit" class="ant-input custom-btn-entrar">Entrar</button>
                     </div>
 
                 </div>
@@ -96,7 +96,7 @@
                     </div>
 
                     <div class="div-criar-conta-btn">
-                        <button type="submit" class="btn-cadastrar">Cadastrar</button>
+                        <button type="submit" class="ant-input custom-btn-cadastrar">Cadastrar</button>
                     </div>
                 </form>
             </div>
@@ -116,7 +116,7 @@
                         class="ant-input custom-input-editar" required
                         title="E-mail inválido">
 
-                        <button type="submit" class="btn-recuperar-senha-salvar">Recuperar Senha</button>
+                        <button type="submit" class="ant-input custom-btn-recuperar">Recuperar</button>
                     </div>
                 </form>
             </div>

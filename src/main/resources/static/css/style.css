@@ -73,40 +73,46 @@ html {
     height: auto;
 }
 
-.btn-nav-perfil {
+.custom-btn-perfil {
+    width: 60px;
+    background-color: #00c8ff;
+    color: white;
     border: none;
-    border-radius: 7px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     font-size: 14px;
     font-weight: bold;
-    width: 70px;
-    height: 30px;
-    color: white;
-    background-color: #00c8ff;
+    border-radius: 5px;
     cursor: pointer;
-    text-align: center;
-    line-height: 30px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.btn-nav-sair {
+.custom-btn-perfil:hover {
+    background-color: #006aff;
+    transform: scale(1.05);
+}
+
+.custom-btn-sair{
+    width: 60px;
+    background-color: #00c8ff;
+    color: white;
     border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
     margin-right: 28px;
     margin-left: 28px;
-    border-radius: 7px;
-    font-size: 14px;
-    font-weight: bold;
-    width: 70px;
-    height: 30px;
-    color: white;
-    background-color: #00c8ff;
-    cursor: pointer;
-    text-align: center;
-    line-height: 30px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.btn-nav-sair:hover,
-.btn-nav-sair:hover,
-.btn-nav-perfil:hover {
+.custom-btn-sair:hover {
     background-color: #006aff;
+    transform: scale(1.05);
 }
 /* FIM NAV ADMINISTRACAO */
 
@@ -150,52 +156,61 @@ html {
     gap: 15px;
 }
 
-.btn-cadastrar {
-    border: none;
-    border-radius: 7px;
-    font-size: 14px;
-    font-weight: bold;
-    width: 90px;
-    height: 30px;
-    color: white;
+.custom-btn-cadastrar {
+    width: 94px;
     background-color: #00c8ff;
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 5px;
     cursor: pointer;
-    text-align: center; 
-    line-height: 20px; 
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.btn-recuperar {
-    border: none;
-    border-radius: 7px;
-    font-size: 14px;
-    font-weight: bold;
-    width: 95px;
-    height: 30px;
-    color: white;
-    background-color: #00c8ff;
-    cursor: pointer;
-    text-align: center; 
-    line-height: 30px; 
-}
-
-.btn-entrar {
-    border: none;
-    border-radius: 7px;
-    font-size: 14px;
-    font-weight: bold;
-    width: 70px;
-    height: 30px;
-    color: white;
-    background-color: #00c8ff;
-    cursor: pointer;
-    text-align: center; 
-    line-height: 30px; 
-}
-
-.btn-entrar:hover,
-.btn-recuperar:hover,
-.btn-cadastrar:hover {
+.custom-btn-cadastrar:hover {
     background-color: #006aff;
+    transform: scale(1.05);
+}
+
+.custom-btn-recuperar {
+    width: 98px;
+    background-color: #00c8ff;
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.custom-btn-recuperar:hover {
+    background-color: #006aff;
+    transform: scale(1.05);
+}
+
+.custom-btn-entrar {
+    width: 70px;
+    background-color: #00c8ff;
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.custom-btn-entrar:hover {
+    background-color: #006aff;
+    transform: scale(1.05);
 }
 /* LOGIN ADMNISTRATIVA */
 
@@ -384,24 +399,26 @@ html {
     color: #000;
 }
 
-.btn-salvar-conta {
-    border: none;
-    margin-right: 28px;
-    margin-left: 28px;
-    border-radius: 7px;
-    font-size: 14px;
-    font-weight: bold;
+.custom-btn-salvar-conta {
     width: 70px;
     height: 30px;
-    color: white;
     background-color: #00c8ff;
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
     cursor: pointer;
-    text-align: center; 
-    line-height: 30px; 
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 20px;
 }
 
-.btn-salvar-conta:hover {
+.custom-btn-salvar-conta:hover {
     background-color: #006aff;
+    transform: scale(1.05);
 }
 
 .conteiner-inputs-editar {
@@ -418,7 +435,6 @@ html {
     justify-content: center;
     align-items: center;
     gap: 20px;
-    margin-bottom: 20px;
 }
 
 .custom-input-editar {
@@ -901,6 +917,26 @@ html {
     margin-top: 20px;
 }
 
+.custom-btn-cadastrar-academia {
+    width: 94px;
+    height: 30px;
+    background-color: #00c8ff;
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.custom-btn-cadastrar-academia:hover {
+    background-color: #006aff;
+    transform: scale(1.05);
+}
+
 .custom-input-telefone {
     width: 150px;
     font-size: 14px;
@@ -916,6 +952,41 @@ html {
 /* CADASTRAR ACADEMIAS */
 
 /* REGISTROS ACADEMIAS */
+.conteiner-pesquisar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 50px;
+}
+
+.conteiner-pesquisar select {
+    width: 210px;
+    border: 1px solid #aaa;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-btn-pesquisar {
+    width: 94px;
+    background-color: #00c8ff;
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.custom-btn-pesquisar:hover {
+    background-color: #006aff;
+    transform: scale(1.05);
+}
+
+
 .conteiner-registros-academias {
     margin-top: 50px;
     width: 100%;
