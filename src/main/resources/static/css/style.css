@@ -1197,6 +1197,20 @@ html {
     color: white;
 }
 
+.icon-lixo-professores {
+    color: #fd3434;
+    font-size: 20px;
+    height: auto;
+    cursor: pointer;
+    border: none;
+    background: none;
+    outline: none;
+    transition: transform 0.1s ease-in-out;
+}
+
+.icon-lixo-professores:hover {
+    transform: scale(1.3);
+}
 
 /* REGISTRO PROFESSORES */
 
