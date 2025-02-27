@@ -2,9 +2,11 @@ package kickboxing.controler;
 
 import kickboxing.model.Academia;
 import kickboxing.service.AcademiaService;
+import kickboxing.service.EventoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,6 +20,10 @@ public class AcademiaController {
 
     @Autowired
     private AcademiaService academiaService;
+
+    public AcademiaController(AcademiaService academiaService) {
+        this.academiaService = academiaService;
+    }
 
     @PostMapping("/criarAcademia")
     public String criarAcademia(@RequestParam("nomeAcademia") String nomeAcademia,
@@ -54,5 +60,17 @@ public class AcademiaController {
         List<Academia> academias = academiaService.listarAcademias();
         model.addAttribute("academias", academias);
         return "academiasAdm";
+    }
+
+    @PostMapping("/academias/{id}")
+    public String excluirAcademia(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+        try {
+            academiaService.excluirAcademia(id);
+            redirectAttributes.addFlashAttribute("successMessage", "Academia excluída com sucesso!");
+
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Erro ao excluir Academia: " + e.getMessage());
+        }
+        return "redirect:/academiasAdm";
     }
 }

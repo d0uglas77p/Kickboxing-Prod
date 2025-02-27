@@ -39,6 +39,19 @@ public class AcademiaService {
         return academiaRepository.findAll();
     }
 
+    public void excluirAcademia(Long id) {
+        Academia academia = academiaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Academia não encontrada"));
+
+        // Remover imagem
+        File imagem = new File(System.getProperty("user.dir") + "/src/main/resources/static" + academia.getImagemAcademia());
+        if (imagem.exists()) {
+            imagem.delete();
+        }
+
+        academiaRepository.deleteById(id);
+    }
+
     //* AMBIENTE DE PRODUÇÃO ACESSE O ARQUIVO ---- "PRODUCAO.MD" ---- *//
     //* IMPORTANTE PARA ENTENDER COMO VAI FUNCIONAR!!!!!!! *//
 }

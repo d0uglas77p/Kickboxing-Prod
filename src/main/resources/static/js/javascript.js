@@ -198,3 +198,23 @@ function filtrarEventos(mes) {
         })
     .catch(error => console.error("Erro ao buscar eventos:", error));
 }
+
+function openModalImagemAcademia(imgSrc) {
+    const modalImagemAcademia = document.getElementById("imagemAcademiaModal");
+    const modalImageAcademia = document.getElementById("imagemAcademiaModalImage");
+
+    modalImageAcademia.src = imgSrc;
+    modalImagemAcademia.style.display = "block";
+}
+
+function closeModalAcademiaEvento() {
+    const modalImagemAcademia = document.getElementById("imagemAcademiaModal");
+    modalImagemAcademia.style.display = "none";
+}
+
+window.onclick = function (event) {
+    let modalImagemAcademia = document.getElementById("imagemAcademiaModal");
+    if (event.target === modalImagemAcademia) {
+        closeModalAcademiaEvento();
+    }
+};

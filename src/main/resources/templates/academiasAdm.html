@@ -24,7 +24,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- CSS do projeto -->
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 
     <title>Administração - Academias</title>
 </head>
@@ -126,33 +126,54 @@
         <div class="conteiner-academias">
             <ul>
                 <li th:each="academia : ${academias}">
-                    <span th:text="${academia.nomeAcademia}"></span> -
-                    <span th:text="${academia.responsavelAcademia}"></span> -
-                    <span th:text="${academia.enderecoAcademia}"></span> -
-                    <span th:text="${academia.cidadeAcademia}"></span> -
-                    <span th:text="${academia.contatoAcademia}"></span>
-                    <img th:src="${academia.imagemAcademia}" alt="Imagem da academia" width="250">
+                    <img th:src="${academia.imagemAcademia}" alt="Imagem da academia"
+                         onclick="openModalImagemAcademia(this.src)">
+
+                    <div class="div-info-academias">
+                        <span th:text="${academia.nomeAcademia}" class="span-nomeAcademia"></span>
+
+                        <div class="div-tecnico">
+                            <span>Responsável Técnico:</span>
+                            <span th:text="${academia.responsavelAcademia}" class="academia-responsavel-tecnico"></span>
+                        </div>
+
+                        <div class="div-endereco">
+                            <span th:text="${academia.enderecoAcademia}"></span>
+                        </div>
+
+                        <span th:text="${academia.cidadeAcademia}"></span>
+
+                        <div class="div-contato-academia">
+                            <span th:text="${academia.contatoAcademia}" class="academia-contato"></span>
+                        </div>
+                    </div>
+
+                    <form th:id="'formExcluir_' + ${academia.idAcademia}"
+                          th:action="@{/academias/{id}(id=${academia.idAcademia})}"
+                          method="post">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <div>
+                            <button type="button" class="icon-lixo-eventos" th:attr="data-id=${academia.idAcademia}">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
+                    </form>
+
                 </li>
             </ul>
         </div>
+
+        <!-- INICIO MODAL IMAGEM ACADEMIA-->
+        <div id="imagemAcademiaModal" class="imagem-academia-modal">
+            <div class="imagem-academia-modal-content">
+                <span class="close-imagem-academia-modal" onclick="closeModalAcademiaEvento()">&times;</span>
+                <img id="imagemAcademiaModalImage" src="" alt="Imagem da academia" />
+            </div>
+        </div>
+        <!-- FIM MODAL IMAGEM ACADEMIA-->
         <!-- REGISTROS ACADEMIAS -->
     </section>
     <!--FIM CONTEUDO-->
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
 
     <!--INICIO RODAPÉ -->
     <footer>
@@ -194,6 +215,31 @@
             });
         </script>
     </div>
+
+    <!-- POPUP DE CONFIRMAR EXCLUSÃO ESTILIZADO -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".icon-lixo-eventos").forEach(button => {
+                button.addEventListener("click", function () {
+                    let academiaId = this.getAttribute("data-id");
+                    Swal.fire({
+                        title: "Tem certeza?",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#d33",
+                        cancelButtonColor: "#3085d6",
+                        confirmButtonText: "Sim, excluir!",
+                        cancelButtonText: "Cancelar"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            document.getElementById("formExcluir_" + academiaId).submit();
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+    <!-- Sweet Alert Componentes UI -->
 
     <script src="/static/js/javascript.js"></script>
 </body>
