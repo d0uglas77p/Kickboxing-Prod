@@ -218,3 +218,98 @@ window.onclick = function (event) {
         closeModalAcademiaEvento();
     }
 };
+
+function pesquisarAcademias() {
+    const cidade = document.getElementById('select-cidade').value;
+
+    fetch('/pesquisarAcademias?opcoes-cidades=' + cidade)
+        .then(response => response.json())
+        .then(academias => {
+            let containerAcademias = document.querySelector(".conteiner-academias ul");
+            containerAcademias.innerHTML = "";
+
+            academias.forEach(academia => {
+                let academiaItem = document.createElement("li");
+
+                let img = document.createElement("img");
+                img.src = academia.imagemAcademia;
+                img.alt = "Imagem da academia";
+                img.width = 200;
+                img.onclick = function() { openModalImagemAcademia(this.src); };
+
+                let divInfoAcademias = document.createElement("div");
+                divInfoAcademias.classList.add("div-info-academias");
+
+                let nomeSpan = document.createElement("span");
+                nomeSpan.textContent = academia.nomeAcademia;
+                nomeSpan.classList.add("span-nomeAcademia");
+
+                let divResponsavel = document.createElement("div");
+                divResponsavel.classList.add("div-tecnico");
+                divResponsavel.innerHTML = `<span>Responsável Técnico:</span> <span class="academia-responsavel-tecnico">${academia.responsavelAcademia}</span>`;
+
+                let divEndereco = document.createElement("div");
+                divEndereco.classList.add("div-endereco");
+                divEndereco.innerHTML = `<span>${academia.enderecoAcademia}</span>`;
+
+                let cidadeSpan = document.createElement("span");
+                cidadeSpan.textContent = academia.cidadeAcademia;
+
+                let divContato = document.createElement("div");
+                divContato.classList.add("div-contato-academia");
+                divContato.innerHTML = `<span class="academia-contato">${academia.contatoAcademia}</span>`;
+
+                divInfoAcademias.appendChild(nomeSpan);
+                divInfoAcademias.appendChild(divResponsavel);
+                divInfoAcademias.appendChild(divEndereco);
+                divInfoAcademias.appendChild(cidadeSpan);
+                divInfoAcademias.appendChild(divContato);
+
+                let formExcluir = document.createElement("form");
+                formExcluir.id = `formExcluir_${academia.idAcademia}`;
+                formExcluir.action = `/academias/${academia.idAcademia}`;
+                formExcluir.method = "post";
+
+                let inputHidden = document.createElement("input");
+                inputHidden.type = "hidden";
+                inputHidden.name = "_method";
+                inputHidden.value = "DELETE";
+
+                let btnExcluir = document.createElement("button");
+                btnExcluir.type = "button";
+                btnExcluir.classList.add("icon-lixo-eventos");
+                btnExcluir.setAttribute("data-id", academia.idAcademia);
+                btnExcluir.innerHTML = `<i class="fa-solid fa-trash"></i>`;
+
+                btnExcluir.style.border = "none";
+                btnExcluir.style.backgroundColor = "transparent";
+                btnExcluir.style.cursor = "pointer";
+
+                btnExcluir.addEventListener("click", function () {
+                    Swal.fire({
+                        title: "Tem certeza?",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#d33",
+                        cancelButtonColor: "#3085d6",
+                        confirmButtonText: "Sim, excluir!",
+                        cancelButtonText: "Cancelar"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            document.getElementById(`formExcluir_${academia.idAcademia}`).submit();
+                        }
+                    });
+                });
+
+                formExcluir.appendChild(inputHidden);
+                formExcluir.appendChild(btnExcluir);
+
+                academiaItem.appendChild(img);
+                academiaItem.appendChild(divInfoAcademias);
+                academiaItem.appendChild(formExcluir);
+
+                containerAcademias.appendChild(academiaItem);
+            });
+        })
+        .catch(error => console.error("Erro ao buscar academias:", error));
+}

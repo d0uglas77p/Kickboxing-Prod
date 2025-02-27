@@ -52,6 +52,14 @@ public class AcademiaService {
         academiaRepository.deleteById(id);
     }
 
+    public List<String> listarCidades() {
+        return academiaRepository.findDistinctCidades();
+    }
+
+    public List<Academia> pesquisarAcademias(String cidade) {
+        return academiaRepository.findByCidadeAcademia(cidade);
+    }
+
     //* AMBIENTE DE PRODUÇÃO ACESSE O ARQUIVO ---- "PRODUCAO.MD" ---- *//
     //* IMPORTANTE PARA ENTENDER COMO VAI FUNCIONAR!!!!!!! *//
 }

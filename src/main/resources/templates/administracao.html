@@ -24,7 +24,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- CSS do projeto -->
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 
     <title>Administração - Início</title>
 </head>
@@ -68,9 +68,9 @@
         </div>
         <div>
             <form action="/logout" method="post">
-                <button type="button" onclick="openModalEditarConta()" class="btn-nav-perfil">Perfil</button>
+                <button type="button" onclick="openModalEditarConta()" class="ant-input custom-btn-perfil">Perfil</button>
 
-                <button type="submit" class="btn-nav-sair">Sair</button>
+                <button type="submit" class="ant-input custom-btn-sair">Sair</button>
             </form>
         </div>
     </nav>
@@ -107,7 +107,7 @@
                         </div>
                     </div>
 
-                    <button type="button" onclick="openModalSenhaConta()" class="btn-salvar-conta">Editar</button>
+                    <button type="button" onclick="openModalSenhaConta()" class="anti-input custom-btn-salvar-conta">Editar</button>
                 </form>
             </div>
         </div>
@@ -129,7 +129,7 @@
                             pattern=".{8,}" required title="A senha deve ter pelo menos 8 caracteres"
                             autocomplete="new-password" autocorrect="off" spellcheck="false" class="ant-input custom-input">
 
-                        <button type="submit" class="btn-salvar-conta">Salvar</button>
+                        <button type="submit" class="anti-input custom-btn-salvar-conta">Salvar</button>
                     </div>
                 </form>
             </div>
