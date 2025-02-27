@@ -24,7 +24,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- CSS do projeto -->
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 
     <title>Administração - Professores</title>
 </head>
@@ -94,11 +94,18 @@
                     </div>
 
                     <div class="div-cadastrar-professores-cidade">
-                        <input type="text" id="cidade-professor" name="cidadeProfessor" 
-                        placeholder="Cidade do Professor" class="ant-input custom-input-editar" required>
+                        <input type="text" id="cidade-professor" name="cidadeProfessor"
+                               placeholder="Cidade do Professor" class="ant-input custom-input-editar" required>
 
-                        <input type="text" id="graducacao-professor" name="graduacaoProfessor" 
-                        placeholder="Graduação do Professor" class="ant-input custom-input-editar" required>
+                        <select id="graduacao-professor" name="graduacaoProfessor" class="ant-input custom-input-editar" required>
+                            <option>Graduação</option>
+                            <option value="Amarela">Amarela</option>
+                            <option value="Laranja">Laranja</option>
+                            <option value="Verde">Verde</option>
+                            <option value="Azul">Azul</option>
+                            <option value="Marrom">Marrom</option>
+                            <option value="Preta">Preta</option>
+                        </select>
                     </div>
 
                     <div class="div-cadastrar-professores-equipe">
@@ -113,7 +120,7 @@
                         <input type="file" id="imagem-professores" name="imagemProfessor" accept="image/*"
                         class="ant-input custom-input-upload" required>
 
-                        <button type="submit" class="btn-cadastrar">Cadastrar</button>
+                        <button type="submit" class="ant-input custom-btn-cadastrar">Cadastrar</button>
                     </div>
                 </div>
             </form>
@@ -128,13 +135,21 @@
         <div class="conteiner-professores">
             <ul>
                 <li th:each="professor : ${professores}">
-                    <span th:text="${professor.registroProfessor}"></span> -
-                    <span th:text="${professor.nomeProfessor}"></span> -
-                    <span th:text="${professor.cidadeProfessor}"></span> -
-                    <span th:text="${professor.graduacaoProfessor}"></span> -
-                    <span th:text="${professor.equipeProfessor}"></span> -
+
+                    <img th:src="${professor.imagemProfessor}" alt="Imagem do professor" width="200"
+                         onclick="openModalImagemProfessor(this.src)">
+
+                    <span th:text="${professor.registroProfessor}"></span>
+
+                    <span th:text="${professor.nomeProfessor}"></span>
+
+                    <span th:text="${professor.cidadeProfessor}"></span>
+
+                    <span th:text="${professor.graduacaoProfessor}"></span>
+
+                    <span th:text="${professor.equipeProfessor}"></span>
+
                     <span th:text="${#temporals.format(professor.nascimentoProfessor, 'dd-MM-yyyy')}"></span>
-                    <img th:src="${professor.imagemProfessor}" alt="Imagem do professor" width="250">
                 </li>
             </ul>
         </div>
