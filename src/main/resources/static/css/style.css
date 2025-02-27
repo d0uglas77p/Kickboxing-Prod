@@ -670,7 +670,7 @@ html {
 
 .span-nomeEvento {
     margin-top: 5px;
-    font-size: 16px !important;
+    font-size: 18px !important;
     font-weight: bold;
 }
 
@@ -859,7 +859,7 @@ html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 .conteiner-cadastrar-academias {
@@ -923,7 +923,7 @@ html {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: #006aff;
+    background-color: #181818;
 }
 
 .conteiner-registros-academias h2 {
@@ -931,6 +931,119 @@ html {
     display: flex;
     margin-top: 5px;
 }
+
+.conteiner-academias ul {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    list-style: none;
+    padding: 0;
+    margin-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.conteiner-academias li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    flex: 1 1 calc(25% - 60px);
+    max-width: calc(25% - 60px);
+    box-sizing: border-box;
+    min-width: 320px;
+}
+
+.conteiner-academias img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+}
+
+.conteiner-academias img:hover {
+    transform: scale(1.2);
+    margin-bottom: 20px;
+}
+
+.div-info-academias {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.span-nomeAcademia {
+    margin-top: 5px;
+    font-size: 18px !important;
+    font-weight: bold;
+}
+
+.div-tecnico {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.academia-responsavel-tecnico {
+    font-weight: bold;
+}
+
+.div-endereco {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.academia-contato {
+    color: #006aff;
+}
+
+/* IMAGEM NO MODAL ACADEMIA */
+.imagem-academia-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagem-academia-modal-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.imagem-academia-modal-content img {
+    width: 400px;
+    height: auto;
+}
+
+.close-imagem-academia-modal {
+    color: #fff;
+    font-size: 40px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.close-imagem-academia-modal:hover {
+    color: #bbb;
+}
+/* IMAGEM NO MODAL ACADEMIA */
 /* REGISTRO ACADEMIAS */
 
 /* CADASTRAR PROFESSORES */
