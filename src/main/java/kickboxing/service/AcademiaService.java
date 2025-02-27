@@ -9,7 +9,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class AcademiaService {
@@ -55,6 +54,10 @@ public class AcademiaService {
 
     public List<String> listarCidades() {
         return academiaRepository.findDistinctCidades();
+    }
+
+    public List<Academia> pesquisarAcademias(String cidade) {
+        return academiaRepository.findByCidadeAcademia(cidade);
     }
 
     //* AMBIENTE DE PRODUÇÃO ACESSE O ARQUIVO ---- "PRODUCAO.MD" ---- *//

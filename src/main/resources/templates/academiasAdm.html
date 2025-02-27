@@ -123,14 +123,17 @@
             <h2>Registro de Academias</h2>
         </div>
 
-        <div class="conteiner-pesquisar">
-            <select class="ant-input" name="opcoes-cidades">
-                <option value="">Selecionar Cidade</option>
-                <option th:each="cidade : ${cidades}" th:value="${cidade}" th:text="${cidade}"></option>
-            </select>
+        <form action="/pesquisarAcademias" method="get">
+            <div class="conteiner-pesquisar">
+                <select class="ant-input" name="opcoes-cidades">
+                    <option value="">Selecionar Cidade</option>
+                    <option th:each="cidade : ${cidades}" th:value="${cidade}" th:text="${cidade}"></option>
+                </select>
 
-            <button class="ant-input custom-btn-pesquisar">Pesquisar</button>
-        </div>
+                <button class="ant-input custom-btn-pesquisar" type="submit">Pesquisar</button>
+            </div>
+        </form>
+
 
         <div class="conteiner-academias">
             <ul>
@@ -140,18 +143,14 @@
 
                     <div class="div-info-academias">
                         <span th:text="${academia.nomeAcademia}" class="span-nomeAcademia"></span>
-
                         <div class="div-tecnico">
                             <span>Responsável Técnico:</span>
                             <span th:text="${academia.responsavelAcademia}" class="academia-responsavel-tecnico"></span>
                         </div>
-
                         <div class="div-endereco">
                             <span th:text="${academia.enderecoAcademia}"></span>
                         </div>
-
                         <span th:text="${academia.cidadeAcademia}"></span>
-
                         <div class="div-contato-academia">
                             <span th:text="${academia.contatoAcademia}" class="academia-contato"></span>
                         </div>
@@ -167,7 +166,6 @@
                             </button>
                         </div>
                     </form>
-
                 </li>
             </ul>
         </div>

@@ -2,7 +2,6 @@ package kickboxing.controler;
 
 import kickboxing.model.Academia;
 import kickboxing.service.AcademiaService;
-import kickboxing.service.EventoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -75,5 +74,22 @@ public class AcademiaController {
             redirectAttributes.addFlashAttribute("errorMessage", "Erro ao excluir Academia: " + e.getMessage());
         }
         return "redirect:/academiasAdm";
+    }
+
+    @GetMapping("/pesquisarAcademias")
+    public String pesquisarAcademias(@RequestParam("opcoes-cidades") String cidade, Model model) {
+        List<Academia> academias;
+
+        if (cidade == null || cidade.isEmpty()) {
+            academias = academiaService.listarAcademias();
+        } else {
+            academias = academiaService.pesquisarAcademias(cidade);
+        }
+
+        List<String> cidades = academiaService.listarCidades();
+
+        model.addAttribute("academias", academias);
+        model.addAttribute("cidades", cidades);
+        return "academiasAdm";
     }
 }
