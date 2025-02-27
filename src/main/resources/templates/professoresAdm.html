@@ -143,26 +143,35 @@
                 </thead>
 
                 <tbody>
+                    <tr th:each="professor : ${professores}">
+                        <td>
+                            <img th:src="${professor.imagemProfessor}" alt="Imagem do professor" onclick="openModalImagemProfessor(this.src)">
+                        </td>
 
-                <tr th:each="professor : ${professores}">
-                    <td>
-                        <img th:src="${professor.imagemProfessor}" alt="Imagem do professor"
-                             onclick="openModalImagemProfessor(this.src)">
-                    </td>
+                        <td th:text="${professor.registroProfessor}"></td>
+                        <td th:text="${professor.nomeProfessor}"></td>
+                        <td th:text="${professor.cidadeProfessor}"></td>
 
-                    <td th:text="${professor.registroProfessor}"></td>
-                    <td th:text="${professor.nomeProfessor}"></td>
-                    <td th:text="${professor.cidadeProfessor}"></td>
+                        <td>
+                            <span th:text="${professor.graduacaoProfessor}" th:classappend="${professor.graduacaoProfessor}"></span>
+                        </td>
 
-                    <td>
-                        <span th:text="${professor.graduacaoProfessor}"
-                              th:classappend="${professor.graduacaoProfessor}"></span>
-                    </td>
+                        <td th:text="${professor.equipeProfessor}"></td>
+                        <td th:text="${#temporals.format(professor.nascimentoProfessor, 'dd/MM/yyyy')}"></td>
 
-
-                    <td th:text="${professor.equipeProfessor}"></td>
-                    <td th:text="${#temporals.format(professor.nascimentoProfessor, 'dd/MM/yyyy')}"></td>
-                </tr>
+                        <td>
+                            <form th:id="'formExcluir_' + ${professor.idProfessor}"
+                                  th:action="@{/professores/{id}(id=${professor.idProfessor})}"
+                                  method="post">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <div>
+                                    <button type="button" class="icon-lixo-professores" th:attr="data-id=${professor.idProfessor}">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -211,6 +220,35 @@
             });
         </script>
     </div>
+
+    <!-- POPUP DE CONFIRMAR EXCLUSÃO ESTILIZADO -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+             document.querySelectorAll(".icon-lixo-professores").forEach(button => {
+                 button.addEventListener("click", function (event) {
+                     event.preventDefault(); // Evita o envio imediato
+
+                     let professorId = this.closest('form').getAttribute('action').split('/')[2];
+                     Swal.fire({
+                         title: "Tem certeza?",
+                         icon: "warning",
+                         showCancelButton: true,
+                         confirmButtonColor: "#d33",
+                         cancelButtonColor: "#3085d6",
+                         confirmButtonText: "Sim, excluir!",
+                         cancelButtonText: "Cancelar"
+                     }).then((result) => {
+                         if (result.isConfirmed) {
+                             // Submete o formulário de exclusão
+                             document.getElementById('formExcluir_' + professorId).submit();
+                         }
+                     });
+                 });
+             });
+        });
+
+    </script>
+    <!-- Sweet Alert Componentes UI -->
 
     <script src="/static/js/javascript.js"></script>
 </body>

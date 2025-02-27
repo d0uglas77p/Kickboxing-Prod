@@ -5,6 +5,7 @@ import kickboxing.service.ProfessorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -57,5 +58,17 @@ public class ProfessorController {
         List<Professor> professores = professorService.listarProfessores();
         model.addAttribute("professores", professores);
         return "professoresAdm";
+    }
+
+    @PostMapping("/professores/{id}")
+    public String excluirProfessor(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+        try {
+            professorService.excluirProfessor(id);
+            redirectAttributes.addFlashAttribute("successMessage", "Professor excluído com sucesso!");
+
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Erro ao excluir Professor: " + e.getMessage());
+        }
+        return "redirect:/professoresAdm";
     }
 }

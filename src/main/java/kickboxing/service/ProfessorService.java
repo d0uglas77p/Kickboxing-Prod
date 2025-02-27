@@ -39,6 +39,19 @@ public class ProfessorService {
         return professorRepository.findAll();
     }
 
+    public void excluirProfessor(Long id) {
+        Professor professor = professorRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Professor não encontrado"));
+
+        // Remover imagem
+        File imagem = new File(System.getProperty("user.dir") + "/src/main/resources/static" + professor.getImagemProfessor());
+        if (imagem.exists()) {
+            imagem.delete();
+        }
+
+        professorRepository.deleteById(id);
+    }
+
     //* AMBIENTE DE PRODUÇÃO ACESSE O ARQUIVO ---- "PRODUCAO.MD" ---- *//
     //* IMPORTANTE PARA ENTENDER COMO VAI FUNCIONAR!!!!!!! *//
 }
