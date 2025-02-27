@@ -1173,21 +1173,68 @@ html {
 /* CADASTRAR PROFESSORES */
 
 /* REGISTROS PROFESSORES */
-.conteiner-registros-professores {
-    margin-top: 50px;
-    width: 100%;
+.conteiner-professores {
+    margin-top: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    background-color: #181818;
 }
 
-.conteiner-registros-professores h2 {
+.conteiner-professores th {
+    font-size: 18px;
+    padding: 35px;
+    background-color: #181818;
+    text-align: center;
     color: white;
-    display: flex;
-    margin-top: 5px;
 }
+
+.conteiner-professores td {
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+.conteiner-professores img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+
+.Amarela {
+    background-color: #f6ff00;
+}
+
+.Laranja {
+    background-color: #ff5e00;
+}
+
+.Verde {
+    background-color: #00a606;
+}
+
+.Azul {
+    background-color: #0055ff;
+}
+
+.Marrom {
+    background-color: #4d2e26;
+}
+
+.Preta {
+    background-color: #000000;
+}
+
+.Amarela, .Laranja, .Verde, .Azul, .Marrom, .Preta {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    color: white;
+}
+
+
 /* REGISTRO PROFESSORES */
 
 /* CADASTRAR ALUNOS */

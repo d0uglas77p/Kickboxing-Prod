@@ -98,7 +98,7 @@
                                placeholder="Cidade do Professor" class="ant-input custom-input-editar" required>
 
                         <select id="graduacao-professor" name="graduacaoProfessor" class="ant-input custom-input-editar" required>
-                            <option>Graduação</option>
+                            <option value="" disabled selected>Graduação</option>
                             <option value="Amarela">Amarela</option>
                             <option value="Laranja">Laranja</option>
                             <option value="Verde">Verde</option>
@@ -127,50 +127,49 @@
         </div>
         <!--CADASTRAR PROFESSORES-->
 
-        <!--REGISTROS PROFESSORES-->
-        <div class="conteiner-registros-professores">
-            <h2>Registro de Professores</h2>
-        </div>
-
+        <!-- REGISTROS PROFESSORES -->
         <div class="conteiner-professores">
-            <ul>
-                <li th:each="professor : ${professores}">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Foto</th>
+                        <th>Registro</th>
+                        <th>Nome</th>
+                        <th>Cidade</th>
+                        <th>Graduação</th>
+                        <th>Equipe</th>
+                        <th>Data de Nascimento</th>
+                    </tr>
+                </thead>
 
-                    <img th:src="${professor.imagemProfessor}" alt="Imagem do professor" width="200"
-                         onclick="openModalImagemProfessor(this.src)">
+                <tbody>
 
-                    <span th:text="${professor.registroProfessor}"></span>
+                <tr th:each="professor : ${professores}">
+                    <td>
+                        <img th:src="${professor.imagemProfessor}" alt="Imagem do professor"
+                             onclick="openModalImagemProfessor(this.src)">
+                    </td>
 
-                    <span th:text="${professor.nomeProfessor}"></span>
+                    <td th:text="${professor.registroProfessor}"></td>
+                    <td th:text="${professor.nomeProfessor}"></td>
+                    <td th:text="${professor.cidadeProfessor}"></td>
 
-                    <span th:text="${professor.cidadeProfessor}"></span>
+                    <td>
+                        <span th:text="${professor.graduacaoProfessor}"
+                              th:classappend="${professor.graduacaoProfessor}"></span>
+                    </td>
 
-                    <span th:text="${professor.graduacaoProfessor}"></span>
 
-                    <span th:text="${professor.equipeProfessor}"></span>
-
-                    <span th:text="${#temporals.format(professor.nascimentoProfessor, 'dd-MM-yyyy')}"></span>
-                </li>
-            </ul>
+                    <td th:text="${professor.equipeProfessor}"></td>
+                    <td th:text="${#temporals.format(professor.nascimentoProfessor, 'dd/MM/yyyy')}"></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
-        <!--REGISTROS PROFESSORES-->
+        <!-- FIM REGISTROS PROFESSORES -->
+
     </section>
     <!--FIM CONTEUDO-->
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
 
     <!--INICIO RODAPÉ -->
     <footer>
