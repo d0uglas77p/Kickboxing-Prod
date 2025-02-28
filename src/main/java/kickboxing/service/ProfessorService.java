@@ -52,6 +52,11 @@ public class ProfessorService {
         professorRepository.deleteById(id);
     }
 
+    public Professor buscarProfessorPorId(Long id) {
+        return professorRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Professor não encontrado"));
+    }
+
     //* AMBIENTE DE PRODUÇÃO ACESSE O ARQUIVO ---- "PRODUCAO.MD" ---- *//
     //* IMPORTANTE PARA ENTENDER COMO VAI FUNCIONAR!!!!!!! *//
 }

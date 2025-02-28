@@ -318,21 +318,18 @@ function openModalImagemProfessor(imgElement) {
     const modalImagemProfessor = document.getElementById("imagemProfessorModal");
     const modalImageProfessor = document.getElementById("imagemProfessorModalImage");
 
-    // Atualiza a imagem no modal
     modalImageProfessor.src = imgElement.src;
 
-    // Preenche os dados do professor no modal
+    document.getElementById("professorId").value = imgElement.getAttribute("data-id");
     document.getElementById("professorNome").value = imgElement.getAttribute("data-nome");
     document.getElementById("professorRegistro").value = imgElement.getAttribute("data-registro");
     document.getElementById("professorCidade").value = imgElement.getAttribute("data-cidade");
     document.getElementById("professorGraduacao").value = imgElement.getAttribute("data-graduacao");
     document.getElementById("professorEquipe").value = imgElement.getAttribute("data-equipe");
-    document.getElementById("professorNascimento").value = imgElement.getAttribute("data-nascimento") ? new Date(imgElement.getAttribute("data-nascimento")).toLocaleDateString('en-CA') : ''; // Formato ISO para input date
+    document.getElementById("professorNascimento").value = imgElement.getAttribute("data-nascimento") ? new Date(imgElement.getAttribute("data-nascimento")).toLocaleDateString('en-CA') : '';
 
-    // Exibe o modal e centraliza
     modalImagemProfessor.style.display = "flex";
 }
-
 
 function closeModalImagemProfessor() {
     const modalImagemProfessor = document.getElementById("imagemProfessorModal");
