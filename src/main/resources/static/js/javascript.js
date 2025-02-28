@@ -326,7 +326,7 @@ function openModalImagemProfessor(imgElement) {
     document.getElementById("professorCidade").value = imgElement.getAttribute("data-cidade");
     document.getElementById("professorGraduacao").value = imgElement.getAttribute("data-graduacao");
     document.getElementById("professorEquipe").value = imgElement.getAttribute("data-equipe");
-    document.getElementById("professorNascimento").value = imgElement.getAttribute("data-nascimento") ? new Date(imgElement.getAttribute("data-nascimento")).toLocaleDateString('en-CA') : '';
+//    document.getElementById("professorNascimento").value = imgElement.getAttribute("data-nascimento");
 
     modalImagemProfessor.style.display = "flex";
 }
