@@ -449,3 +449,145 @@ function pesquisarProfessores() {
         })
         .catch(error => console.error("Erro ao buscar professores:", error));
 }
+
+function openModalImagemAluno(imgElement) {
+    const modalImagemAluno = document.getElementById("imagemAlunoModal");
+    const modalImageAluno = document.getElementById("imagemAlunoModalImage");
+
+    modalImageAluno.src = imgElement.src;
+
+    document.getElementById("alunoId").value = imgElement.getAttribute("data-id");
+    document.getElementById("alunoNome").value = imgElement.getAttribute("data-nome");
+    document.getElementById("alunoRegistro").value = imgElement.getAttribute("data-registro");
+    document.getElementById("alunoCidade").value = imgElement.getAttribute("data-cidade");
+    document.getElementById("alunoGraduacao").value = imgElement.getAttribute("data-graduacao");
+    document.getElementById("alunoAcademia").value = imgElement.getAttribute("data-academia");
+    document.getElementById("alunoResponsavel").value = imgElement.getAttribute("data-responsavel");
+//    document.getElementById("professorNascimento").value = imgElement.getAttribute("data-nascimento");
+
+    modalImagemAluno.style.display = "flex";
+}
+
+function closeModalImagemAluno() {
+    const modalImagemAluno = document.getElementById("imagemAlunoModal");
+    modalImagemAluno.style.display = "none";
+}
+
+window.onclick = function(event) {
+    let modalImagemAluno = document.getElementById("imagemAlunoModal");
+    if (event.target === modalImagemAluno) {
+        closeModalImagemAluno();
+    }
+};
+
+function pesquisarAlunos() {
+    const cidade = document.getElementById('select-cidade-alunos').value;
+
+    event.preventDefault();
+
+    fetch('/pesquisarAlunos?opcoes-cidades-alunos=' + cidade)
+        .then(response => response.json())
+        .then(alunos => {
+            let tbody = document.querySelector(".conteiner-alunos tbody");
+            tbody.innerHTML = "";
+
+            alunos.forEach(aluno => {
+                let tr = document.createElement("tr");
+
+                let tdImg = document.createElement("td");
+                let img = document.createElement("img");
+                img.src = aluno.imagemAluno;
+                img.alt = "Imagem do aluno";
+                img.style.borderRadius = "10px";
+                img.setAttribute("data-id", aluno.idAluno);
+                img.setAttribute("data-nome", aluno.nomeAluno);
+                img.setAttribute("data-registro", aluno.registroAluno);
+                img.setAttribute("data-cidade", aluno.cidadeAluno);
+                img.setAttribute("data-graduacao", aluno.graduacaoAluno);
+                img.setAttribute("data-academia", aluno.academiaAluno);
+                img.setAttribute("data-responsavel", aluno.responsavelAluno);
+                img.setAttribute("data-nascimento", aluno.nascimentoAluno);
+                img.onclick = function () {
+                    openModalImagemAluno(this);
+                };
+                tdImg.appendChild(img);
+
+                let tdRegistro = document.createElement("td");
+                tdRegistro.textContent = aluno.registroAluno;
+
+                let tdNome = document.createElement("td");
+                tdNome.textContent = aluno.nomeAluno;
+
+                let tdCidade = document.createElement("td");
+                tdCidade.textContent = aluno.cidadeAluno;
+
+                let tdGraduacao = document.createElement("td");
+                let spanGraduacao = document.createElement("span");
+                spanGraduacao.textContent = aluno.graduacaoAluno;
+                spanGraduacao.classList.add(aluno.graduacaoAluno);
+                tdGraduacao.appendChild(spanGraduacao);
+
+                let tdAcademia = document.createElement("td");
+                tdAcademia.textContent = aluno.academiaAluno;
+
+                let tdResponsavel = document.createElement("td");
+                tdResponsavel.textContent = aluno.responsavelAluno;
+
+                let tdNascimento = document.createElement("td");
+                tdNascimento.textContent = aluno.nascimentoAluno;
+
+                let tdExcluir = document.createElement("td");
+                let formExcluir = document.createElement("form");
+                formExcluir.id = `formExcluir_${aluno.idAluno}`;
+                formExcluir.action = `/alunos/${aluno.idAluno}`;
+                formExcluir.method = "post";
+
+                let inputHidden = document.createElement("input");
+                inputHidden.type = "hidden";
+                inputHidden.name = "_method";
+                inputHidden.value = "DELETE";
+
+                let btnExcluir = document.createElement("button");
+                btnExcluir.type = "button";
+                btnExcluir.classList.add("icon-lixo-alunos");
+                btnExcluir.setAttribute("data-id", aluno.idAluno);
+                btnExcluir.innerHTML = `<i class="fa-solid fa-trash"></i>`;
+                btnExcluir.style.border = "none";
+                btnExcluir.style.backgroundColor = "transparent";
+                btnExcluir.style.cursor = "pointer";
+
+                btnExcluir.addEventListener("click", function () {
+                    Swal.fire({
+                        title: "Tem certeza?",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#d33",
+                        cancelButtonColor: "#3085d6",
+                        confirmButtonText: "Sim, excluir!",
+                        cancelButtonText: "Cancelar"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            document.getElementById(`formExcluir_${aluno.idAluno}`).submit();
+                        }
+                    });
+                });
+
+                formExcluir.appendChild(inputHidden);
+                formExcluir.appendChild(btnExcluir);
+                tdExcluir.appendChild(formExcluir);
+
+                tr.appendChild(tdImg);
+                tr.appendChild(tdRegistro);
+                tr.appendChild(tdNome);
+                tr.appendChild(tdCidade);
+                tr.appendChild(tdGraduacao);
+                tr.appendChild(tdAcademia);
+                tr.appendChild(tdResponsavel);
+                tr.appendChild(tdNascimento);
+                tr.appendChild(tdExcluir);
+
+                tbody.appendChild(tr);
+            });
+        })
+        .catch(error => console.error("Erro ao buscar alunos:", error));
+}

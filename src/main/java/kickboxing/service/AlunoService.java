@@ -1,6 +1,7 @@
 package kickboxing.service;
 
 import kickboxing.model.Aluno;
+import kickboxing.model.Professor;
 import kickboxing.repository.AlunoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,28 @@ public class AlunoService {
 
     public List<Aluno> listarAlunos() {
         return alunoRepository.findAll();
+    }
+
+    public List<Aluno> pesquisarAlunosPorCidade(String cidade) {
+        return alunoRepository.findByCidadeAluno(cidade);
+    }
+
+    public void excluirAluno(Long id) {
+        Aluno aluno = alunoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Aluno não encontrado"));
+
+        // Remover imagem
+        File imagem = new File(System.getProperty("user.dir") + "/src/main/resources/static" + aluno.getImagemAluno());
+        if (imagem.exists()) {
+            imagem.delete();
+        }
+
+        alunoRepository.deleteById(id);
+    }
+
+    public Aluno buscarAlunoPorId(Long id) {
+        return alunoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Aluno não encontrado"));
     }
 
     //* AMBIENTE DE PRODUÇÃO ACESSE O ARQUIVO ---- "PRODUCAO.MD" ---- *//
