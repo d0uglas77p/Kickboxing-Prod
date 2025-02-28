@@ -13,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Controller
@@ -79,17 +80,21 @@ public class ProfessorController {
                                   @RequestParam("cidadeProfessor") String cidadeProfessor,
                                   @RequestParam("graduacaoProfessor") String graduacaoProfessor,
                                   @RequestParam("equipeProfessor") String equipeProfessor,
-                                  @RequestParam("nascimentoProfessor") String nascimentoProfessor,
+//                                  @RequestParam("nascimentoProfessor") String nascimentoProfessor,
                                   @RequestParam(value = "imagemProfessor", required = false) MultipartFile imagemProfessor,
                                   RedirectAttributes redirectAttributes) {
         try {
             Professor professor = professorService.buscarProfessorPorId(idProfessor);
+
             professor.setRegistroProfessor(registroProfessor);
             professor.setNomeProfessor(nomeProfessor);
             professor.setCidadeProfessor(cidadeProfessor);
             professor.setGraduacaoProfessor(graduacaoProfessor);
             professor.setEquipeProfessor(equipeProfessor);
-            professor.setNascimentoProfessor(LocalDate.parse(nascimentoProfessor));
+
+//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//            LocalDate nascimentoLocalDate = LocalDate.parse(nascimentoProfessor, formatter);
+//            professor.setNascimentoProfessor(nascimentoLocalDate);
 
             professorService.salvarProfessor(professor, imagemProfessor);
 
@@ -99,6 +104,7 @@ public class ProfessorController {
         } catch (IOException e) {
             redirectAttributes.addFlashAttribute("errorMessage", "Erro ao salvar a imagem: " + e.getMessage());
             return "redirect:/professoresAdm";
+
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("errorMessage", "Erro ao atualizar professor: " + e.getMessage());
             return "redirect:/professoresAdm";
