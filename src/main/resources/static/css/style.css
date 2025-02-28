@@ -1112,7 +1112,7 @@ html {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.custom-btn-pesquisar:hover {
+.custom-btn-pesquisar-professores:hover {
     background-color: #006aff;
     transform: scale(1.05);
 }

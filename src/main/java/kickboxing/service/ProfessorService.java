@@ -40,9 +40,6 @@ public class ProfessorService {
     }
 
     public List<Professor> pesquisarProfessoresPorCidade(String cidade) {
-        if (cidade == null || cidade.isEmpty()) {
-            return professorRepository.findAll();  // Retorna todos os professores
-        }
         return professorRepository.findByCidadeProfessor(cidade);
     }
 

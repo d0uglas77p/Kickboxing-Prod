@@ -342,3 +342,110 @@ window.onclick = function(event) {
         closeModalImagemProfessor();
     }
 };
+
+function pesquisarProfessores() {
+    const cidade = document.getElementById('select-cidade-professores').value;
+
+    event.preventDefault();
+
+    fetch('/pesquisarProfessores?opcoes-cidades-professores=' + cidade)
+        .then(response => response.json())
+        .then(professores => {
+            let tbody = document.querySelector(".conteiner-professores tbody");
+            tbody.innerHTML = "";
+
+            professores.forEach(professor => {
+                let tr = document.createElement("tr");
+
+                let tdImg = document.createElement("td");
+                let img = document.createElement("img");
+                img.src = professor.imagemProfessor;
+                img.alt = "Imagem do professor";
+                img.style.borderRadius = "10px";
+                img.setAttribute("data-id", professor.idProfessor);
+                img.setAttribute("data-nome", professor.nomeProfessor);
+                img.setAttribute("data-registro", professor.registroProfessor);
+                img.setAttribute("data-cidade", professor.cidadeProfessor);
+                img.setAttribute("data-graduacao", professor.graduacaoProfessor);
+                img.setAttribute("data-equipe", professor.equipeProfessor);
+                img.setAttribute("data-nascimento", professor.nascimentoProfessor);
+                img.onclick = function () {
+                    openModalImagemProfessor(this);
+                };
+                tdImg.appendChild(img);
+
+                let tdRegistro = document.createElement("td");
+                tdRegistro.textContent = professor.registroProfessor;
+
+                let tdNome = document.createElement("td");
+                tdNome.textContent = professor.nomeProfessor;
+
+                let tdCidade = document.createElement("td");
+                tdCidade.textContent = professor.cidadeProfessor;
+
+                let tdGraduacao = document.createElement("td");
+                let spanGraduacao = document.createElement("span");
+                spanGraduacao.textContent = professor.graduacaoProfessor;
+                spanGraduacao.classList.add(professor.graduacaoProfessor);
+                tdGraduacao.appendChild(spanGraduacao);
+
+                let tdEquipe = document.createElement("td");
+                tdEquipe.textContent = professor.equipeProfessor;
+
+                let tdNascimento = document.createElement("td");
+                tdNascimento.textContent = professor.nascimentoProfessor;
+
+                let tdExcluir = document.createElement("td");
+                let formExcluir = document.createElement("form");
+                formExcluir.id = `formExcluir_${professor.idProfessor}`;
+                formExcluir.action = `/professores/${professor.idProfessor}`;
+                formExcluir.method = "post";
+
+                let inputHidden = document.createElement("input");
+                inputHidden.type = "hidden";
+                inputHidden.name = "_method";
+                inputHidden.value = "DELETE";
+
+                let btnExcluir = document.createElement("button");
+                btnExcluir.type = "button";
+                btnExcluir.classList.add("icon-lixo-professores");
+                btnExcluir.setAttribute("data-id", professor.idProfessor);
+                btnExcluir.innerHTML = `<i class="fa-solid fa-trash"></i>`;
+                btnExcluir.style.border = "none";
+                btnExcluir.style.backgroundColor = "transparent";
+                btnExcluir.style.cursor = "pointer";
+
+                btnExcluir.addEventListener("click", function () {
+                    Swal.fire({
+                        title: "Tem certeza?",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#d33",
+                        cancelButtonColor: "#3085d6",
+                        confirmButtonText: "Sim, excluir!",
+                        cancelButtonText: "Cancelar"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            document.getElementById(`formExcluir_${professor.idProfessor}`).submit();
+                        }
+                    });
+                });
+
+                formExcluir.appendChild(inputHidden);
+                formExcluir.appendChild(btnExcluir);
+                tdExcluir.appendChild(formExcluir);
+
+                tr.appendChild(tdImg);
+                tr.appendChild(tdRegistro);
+                tr.appendChild(tdNome);
+                tr.appendChild(tdCidade);
+                tr.appendChild(tdGraduacao);
+                tr.appendChild(tdEquipe);
+                tr.appendChild(tdNascimento);
+                tr.appendChild(tdExcluir);
+
+                tbody.appendChild(tr);
+            });
+        })
+        .catch(error => console.error("Erro ao buscar professores:", error));
+}

@@ -136,7 +136,8 @@
                     <option value="">Selecionar Cidade</option>
                     <option th:each="cidade : ${cidades}" th:value="${cidade}" th:text="${cidade}"></option>
                 </select>
-                <button class="ant-input custom-btn-pesquisar-professores" type="submit">Pesquisar</button>
+                <button class="ant-input custom-btn-pesquisar-professores" type="submit"
+                        onclick="pesquisarProfessores()">Pesquisar</button>
             </div>
         </form>
 
