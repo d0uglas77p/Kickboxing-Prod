@@ -131,21 +131,23 @@
         <div class="conteiner-professores">
             <table>
                 <thead>
-                    <tr>
-                        <th>Foto</th>
-                        <th>Registro</th>
-                        <th>Nome</th>
-                        <th>Cidade</th>
-                        <th>Graduação</th>
-                        <th>Equipe</th>
-                        <th>Data de Nascimento</th>
-                    </tr>
+                <tr>
+                    <th>Foto</th>
+                    <th>Registro</th>
+                    <th>Nome</th>
+                    <th>Cidade</th>
+                    <th>Graduação</th>
+                    <th>Equipe</th>
+                    <th>Data de Nascimento</th>
+                </tr>
                 </thead>
 
                 <tbody>
                     <tr th:each="professor : ${professores}">
                         <td>
-                            <img th:src="${professor.imagemProfessor}" alt="Imagem do professor" onclick="openModalImagemProfessor(this.src)">
+                            <img th:src="${professor.imagemProfessor}" alt="Imagem do professor"
+                                 th:attr="data-nome=${professor.nomeProfessor}, data-registro=${professor.registroProfessor}, data-cidade=${professor.cidadeProfessor}, data-graduacao=${professor.graduacaoProfessor}, data-equipe=${professor.equipeProfessor}, data-nascimento=${professor.nascimentoProfessor}"
+                                 onclick="openModalImagemProfessor(this)" style="border-radius: 10px;">
                         </td>
 
                         <td th:text="${professor.registroProfessor}"></td>
@@ -175,8 +177,53 @@
                 </tbody>
             </table>
         </div>
-        <!-- FIM REGISTROS PROFESSORES -->
 
+        <!-- INICIO MODAL IMAGEM PROFESSOR-->
+        <div id="imagemProfessorModal" class="imagem-professor-modal">
+            <div class="imagem-professor-modal-content">
+                <span class="close-imagem-professor-modal" onclick="closeModalImagemProfessor()">&times;</span>
+                <div class="modal-content-wrapper">
+                    <div class="imagem-container">
+                        <img id="imagemProfessorModalImage" src="" alt="Imagem do professor" />
+                    </div>
+
+                    <div class="professor-details">
+                        <p><strong>Nome:</strong> <input style="width: 271px;" type="text" id="professorNome" class="ant-input custom-input-editar" required></p>
+
+                        <p><strong>Registro:</strong> <input style="width: 255px;" type="text" id="professorRegistro" class="ant-input custom-input-editar" required></p>
+
+                        <p><strong>Cidade:</strong> <input style="width: 265px;" type="text" id="professorCidade" class="ant-input custom-input-editar" required></p>
+
+                        <p><strong>Equipe:</strong> <input style="width: 265px;" type="text" id="professorEquipe" class="ant-input custom-input-editar" required></p>
+
+                        <p><strong>Graduação:</strong>
+                            <select style="width: 236px;" id="professorGraduacao" class="ant-input custom-input-editar" required>
+                                <option value="" disabled selected>Graduação</option>
+                                <option value="Amarela">Amarela</option>
+                                <option value="Laranja">Laranja</option>
+                                <option value="Verde">Verde</option>
+                                <option value="Azul">Azul</option>
+                                <option value="Marrom">Marrom</option>
+                                <option value="Preta">Preta</option>
+                            </select>
+                        </p>
+
+                        <p><strong>Data de Nascimento:</strong>
+                            <input type="date" id="professorNascimento" class="ant-input custom-input-data" required>
+                        </p>
+
+                        <input style="width: 325px;" type="file" id="imagemProfessores" accept="image/*"
+                               class="ant-input custom-input-upload" required>
+
+                        <div class="div-modal-img-button">
+                            <button type="submit" class="anti-input custom-btn-salvar-conta">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FIM MODAL IMAGEM PROFESSOR-->
+        <!-- FIM REGISTROS PROFESSORES -->
     </section>
     <!--FIM CONTEUDO-->
 

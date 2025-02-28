@@ -1163,6 +1163,12 @@ html {
     width: 80px;
     height: 80px;
     object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+}
+
+.conteiner-professores img:hover {
+    transform: scale(1.2);
 }
 
 .Amarela {
@@ -1212,6 +1218,88 @@ html {
     transform: scale(1.3);
 }
 
+/* IMAGEM NO MODAL PROFESSOR */
+.imagem-professor-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagem-professor-modal-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+.modal-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.imagem-container {
+    flex: 0 0 40%;
+    display: flex;
+    justify-content: center;
+}
+
+.imagem-professor-modal-content img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.professor-details {
+    flex: 1;
+    margin-top: 20px;
+}
+
+.professor-details p {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.professor-details strong {
+    margin-right: 10px;
+}
+
+.div-modal-img-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.close-imagem-professor-modal {
+    color: #fff;
+    font-size: 40px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.close-imagem-professor-modal:hover {
+    color: #bbb;
+}
+
+/* IMAGEM NO MODAL PROFESSOR */
 /* REGISTRO PROFESSORES */
 
 /* CADASTRAR ALUNOS */
