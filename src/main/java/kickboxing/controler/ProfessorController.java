@@ -5,6 +5,7 @@ import kickboxing.service.ProfessorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,8 +14,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class ProfessorController {
@@ -57,6 +58,27 @@ public class ProfessorController {
 
     public String listarProfessores(Model model) {
         List<Professor> professores = professorService.listarProfessores();
+
+        // Extrair as cidades dos professores para preencher o select
+        List<String> cidades = professores.stream()
+                .map(Professor::getCidadeProfessor)
+                .distinct()
+                .collect(Collectors.toList());
+
+        model.addAttribute("cidades", cidades);  // Passando a lista de cidades para o modelo
+        model.addAttribute("professores", professores);
+        return "professoresAdm";
+    }
+
+    @GetMapping("/pesquisarProfessores")
+    public String pesquisarProfessores(@RequestParam(required = false) String cidadeProfessor, Model model) {
+        List<Professor> professores;
+        if (cidadeProfessor != null && !cidadeProfessor.isEmpty()) {
+            professores = professorService.pesquisarProfessoresPorCidade(cidadeProfessor);
+        } else {
+            professores = professorService.listarProfessores();
+        }
+
         model.addAttribute("professores", professores);
         return "professoresAdm";
     }
