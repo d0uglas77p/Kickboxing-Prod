@@ -1083,6 +1083,40 @@ html {
 /* REGISTRO ACADEMIAS */
 
 /* CADASTRAR PROFESSORES */
+.conteiner-pesquisar-professores {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 50px;
+}
+
+.conteiner-pesquisar-professores select {
+    width: 210px;
+    border: 1px solid #aaa;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-btn-pesquisar-professores {
+    width: 94px;
+    background-color: #00c8ff;
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.custom-btn-pesquisar:hover {
+    background-color: #006aff;
+    transform: scale(1.05);
+}
+
 .conteiner-cadastrar-professores {
     width: 100%;
     display: flex;

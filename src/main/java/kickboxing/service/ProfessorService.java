@@ -39,6 +39,13 @@ public class ProfessorService {
         return professorRepository.findAll();
     }
 
+    public List<Professor> pesquisarProfessoresPorCidade(String cidade) {
+        if (cidade == null || cidade.isEmpty()) {
+            return professorRepository.findAll();  // Retorna todos os professores
+        }
+        return professorRepository.findByCidadeProfessor(cidade);
+    }
+
     public void excluirProfessor(Long id) {
         Professor professor = professorRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Professor não encontrado"));
