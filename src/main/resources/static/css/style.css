@@ -1337,13 +1337,47 @@ html {
 /* REGISTRO PROFESSORES */
 
 /* CADASTRAR ALUNOS */
+.conteiner-pesquisar-alunos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 50px;
+}
+
+.conteiner-pesquisar-alunos select {
+    width: 210px;
+    border: 1px solid #aaa;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-btn-pesquisar-alunos {
+    width: 94px;
+    background-color: #00c8ff;
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.custom-btn-pesquisar-alunos:hover {
+    background-color: #006aff;
+    transform: scale(1.05);
+}
+
 .cadastrar-aluno-h2 {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 .conteiner-cadastrar-alunos {
@@ -1384,10 +1418,170 @@ html {
 }
 /* CADASTRAR ALUNOS */
 
-/* REGISTROS ALUNOS */
+/* REGISTROS ALUNO */
+.conteiner-alunos {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.conteiner-alunos th {
+    font-size: 18px;
+    padding: 35px;
+    background-color: #181818;
+    text-align: center;
+    color: white;
+}
 
+.conteiner-alunos td {
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
 
+.conteiner-alunos img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+}
+
+.conteiner-alunos img:hover {
+    transform: scale(1.2);
+}
+
+.Amarela {
+    background-color: #f6ff00;
+}
+
+.Laranja {
+    background-color: #ff5e00;
+}
+
+.Verde {
+    background-color: #00a606;
+}
+
+.Azul {
+    background-color: #0055ff;
+}
+
+.Marrom {
+    background-color: #4d2e26;
+}
+
+.Preta {
+    background-color: #000000;
+}
+
+.Amarela, .Laranja, .Verde, .Azul, .Marrom, .Preta {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    color: white;
+}
+
+.icon-lixo-alunos {
+    color: #fd3434;
+    font-size: 20px;
+    height: auto;
+    cursor: pointer;
+    border: none;
+    background: none;
+    outline: none;
+    transition: transform 0.1s ease-in-out;
+}
+
+.icon-lixo-alunos:hover {
+    transform: scale(1.3);
+}
+
+/* IMAGEM NO MODAL ALUNO */
+.imagem-aluno-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagem-aluno-modal-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+.modal-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.imagem-container {
+    flex: 0 0 40%;
+    display: flex;
+    justify-content: center;
+}
+
+.imagem-aluno-modal-content img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.aluno-details {
+    flex: 1;
+    margin-top: 20px;
+}
+
+.aluno-details p {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.aluno-details strong {
+    margin-right: 10px;
+}
+
+.div-modal-img-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.close-imagem-aluno-modal {
+    color: #fff;
+    font-size: 40px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.close-imagem-aluno-modal:hover {
+    color: #bbb;
+}
+/* IMAGEM NO MODAL ALUNO */
 /* REGISTRO ALUNOS */
 
 /* INICIO FOOTER */

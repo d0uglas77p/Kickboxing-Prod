@@ -24,7 +24,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- CSS do projeto -->
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 
     <title>Administração - Alunos</title>
 </head>
@@ -97,8 +97,15 @@
                         <input type="text" id="cidade-aluno" name="cidadeAluno" placeholder="Cidade do Aluno" 
                         class="ant-input ant-input custom-input-editar" required>
 
-                        <input type="text" id="graducacao-aluno" name="graduacaoAluno" 
-                        placeholder="Graduação do Aluno" class="ant-input ant-input custom-input-editar" required>
+                        <select id="graduacao-aluno" name="graduacaoAluno" class="ant-input custom-input-editar" required>
+                            <option value="" disabled selected>Graduação</option>
+                            <option value="Amarela">Amarela</option>
+                            <option value="Laranja">Laranja</option>
+                            <option value="Verde">Verde</option>
+                            <option value="Azul">Azul</option>
+                            <option value="Marrom">Marrom</option>
+                            <option value="Preta">Preta</option>
+                        </select>
                     </div>
 
                     <div class="div-cadastrar-alunos-academia">
@@ -117,46 +124,141 @@
                         class="ant-input custom-input-upload" required>
                     </div>
                     <div>
-                        <button type="submit" class="btn-cadastrar">Cadastrar</button>
+                        <button type="submit" class="ant-input custom-btn-cadastrar">Cadastrar</button>
                     </div>
                 </div>
             </form>
         </div>
         <!--CADASTRAR ALUNOS-->
 
+        <hr class="separator">
+
         <!--REGISTROS ALUNOS-->
+        <form action="/pesquisarAlunos" method="get">
+            <div class="conteiner-pesquisar-alunos">
+                <select class="ant-input" name="opcoes-cidades-alunos" id="select-cidade-alunos">
+                    <option value="">Selecionar Cidade</option>
+                    <option th:each="cidade : ${cidades}" th:value="${cidade}" th:text="${cidade}"></option>
+                </select>
+                <button class="ant-input custom-btn-pesquisar-alunos" type="submit"
+                        onclick="pesquisarAlunos()">Pesquisar</button>
+            </div>
+        </form>
+
         <div class="conteiner-alunos">
-            <ul>
-                <li th:each="aluno : ${alunos}">
-                    <span th:text="${aluno.registroAluno}"></span> -
-                    <span th:text="${aluno.nomeAluno}"></span> -
-                    <span th:text="${aluno.cidadeAluno}"></span> -
-                    <span th:text="${aluno.graduacaoAluno}"></span> -
-                    <span th:text="${aluno.academiaAluno}"></span> -
-                    <span th:text="${aluno.responsavelAluno}"></span> -
-                    <span th:text="${#temporals.format(aluno.nascimentoAluno, 'dd-MM-yyyy')}"></span>
-                    <img th:src="${aluno.imagemAluno}" alt="Imagem do aluno" width="250">
-                </li>
-            </ul>
+            <table>
+                <thead>
+                <tr>
+                    <th>Foto</th>
+                    <th>Registro</th>
+                    <th>Nome</th>
+                    <th>Cidade</th>
+                    <th>Graduação</th>
+                    <th>Academia</th>
+                    <th>Responsável</th>
+                    <th>Data de Nascimento</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="aluno : ${alunos}">
+                    <td>
+                        <img th:src="${aluno.imagemAluno}" alt="Imagem do aluno"
+                             th:attr="data-id=${aluno.idAluno},
+                             data-nome=${aluno.nomeAluno},
+                             data-registro=${aluno.registroAluno},
+                             data-cidade=${aluno.cidadeAluno},
+                             data-graduacao=${aluno.graduacaoAluno},
+                             data-academia=${aluno.academiaAluno},
+                             data-responsavel=${aluno.responsavelAluno},
+                             data-nascimento=${aluno.nascimentoAluno}"
+
+                             onclick="openModalImagemAluno(this)" style="border-radius: 10px;">
+                    </td>
+
+                    <td th:text="${aluno.registroAluno}"></td>
+                    <td th:text="${aluno.nomeAluno}"></td>
+                    <td th:text="${aluno.cidadeAluno}"></td>
+
+                    <td>
+                        <span th:text="${aluno.graduacaoAluno}" th:classappend="${aluno.graduacaoAluno}"></span>
+                    </td>
+
+                    <td th:text="${aluno.academiaAluno}"></td>
+
+                    <td th:text="${aluno.responsavelAluno}"></td>
+
+                    <td th:text="${#temporals.format(aluno.nascimentoAluno, 'dd/MM/yyyy')}"></td>
+
+                    <td>
+                        <form th:id="'formExcluir_' + ${aluno.idAluno}"
+                              th:action="@{/alunos/{id}(id=${aluno.idAluno})}"
+                              method="post">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <div>
+                                <button type="button" class="icon-lixo-alunos" th:attr="data-id=${aluno.idAluno}">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
+
+        <!-- INICIO MODAL IMAGEM ALUNO-->
+        <div id="imagemAlunoModal" class="imagem-aluno-modal">
+            <div class="imagem-aluno-modal-content">
+                <span class="close-imagem-aluno-modal" onclick="closeModalImagemAluno()">&times;</span>
+                <div class="modal-content-wrapper">
+                    <div class="imagem-container">
+                        <img id="imagemAlunoModalImage" src="" alt="Imagem do aluno" />
+                    </div>
+
+                    <div class="aluno-details">
+                        <form id="editarAlunoForm" action="/editarAluno" method="post" enctype="multipart/form-data">
+                            <input type="hidden" id="alunoId" name="idAluno"> <!-- Campo oculto para o ID -->
+
+                            <p><strong>Nome:</strong> <input style="width: 271px;" type="text" id="alunoNome" name="nomeAluno" class="ant-input custom-input-editar" required></p>
+
+                            <p><strong>Registro:</strong> <input style="width: 255px;" type="text" id="alunoRegistro" name="registroAluno" class="ant-input custom-input-editar" required></p>
+
+                            <p><strong>Cidade:</strong> <input style="width: 265px;" type="text" id="alunoCidade" name="cidadeAluno" class="ant-input custom-input-editar" required></p>
+
+                            <p><strong>Graduação:</strong>
+                                <select style="width: 236px;" id="alunoGraduacao" name="graduacaoAluno" class="ant-input custom-input-editar" required>
+                                    <option value="" disabled selected>Graduação</option>
+                                    <option value="Amarela">Amarela</option>
+                                    <option value="Laranja">Laranja</option>
+                                    <option value="Verde">Verde</option>
+                                    <option value="Azul">Azul</option>
+                                    <option value="Marrom">Marrom</option>
+                                    <option value="Preta">Preta</option>
+                                </select>
+                            </p>
+
+                            <p><strong>Academia:</strong> <input style="width: 243px;" type="text" id="alunoAcademia" name="academiaAluno" class="ant-input custom-input-editar" required></p>
+
+                            <p><strong>Responsável:</strong> <input style="width: 225px;" type="text" id="alunoResponsavel" name="responsavelAluno" class="ant-input custom-input-editar" required></p>
+
+                            <!--                            <p><strong>Data de Nascimento:</strong>-->
+                            <!--                                <input type="date" id="alunoNascimento" name="nascimentoAluno" class="ant-input custom-input-data" required>-->
+                            <!--                            </p>-->
+
+                            <input style="width: 325px;" type="file" id="imagemAlunos" name="imagemAluno" accept="image/*" class="ant-input custom-input-upload">
+                            <div class="div-modal-img-button">
+                                <button type="submit" class="anti-input custom-btn-salvar-conta">Salvar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FIM MODAL IMAGEM ALUNO-->
         <!--REGISTROS ALUNOS-->
     </section>
     <!--FIM CONTEUDO-->
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
 
     <!--INICIO RODAPÉ -->
     <footer>
@@ -198,6 +300,35 @@
             });
         </script>
     </div>
+
+    <!-- POPUP DE CONFIRMAR EXCLUSÃO ESTILIZADO -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+             document.querySelectorAll(".icon-lixo-alunos").forEach(button => {
+                 button.addEventListener("click", function (event) {
+                     event.preventDefault(); // Evita o envio imediato
+
+                     let alunoId = this.closest('form').getAttribute('action').split('/')[2];
+                     Swal.fire({
+                         title: "Tem certeza?",
+                         icon: "warning",
+                         showCancelButton: true,
+                         confirmButtonColor: "#d33",
+                         cancelButtonColor: "#3085d6",
+                         confirmButtonText: "Sim, excluir!",
+                         cancelButtonText: "Cancelar"
+                     }).then((result) => {
+                         if (result.isConfirmed) {
+                             // Submete o formulário de exclusão
+                             document.getElementById('formExcluir_' + alunoId).submit();
+                         }
+                     });
+                 });
+             });
+        });
+
+    </script>
+    <!-- Sweet Alert Componentes UI -->
 
     <script src="/static/js/javascript.js"></script>
 </body>
