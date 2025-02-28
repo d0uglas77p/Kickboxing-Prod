@@ -71,4 +71,37 @@ public class ProfessorController {
         }
         return "redirect:/professoresAdm";
     }
+
+    @PostMapping("/editarProfessor")
+    public String editarProfessor(@RequestParam("idProfessor") Long idProfessor,
+                                  @RequestParam("registroProfessor") String registroProfessor,
+                                  @RequestParam("nomeProfessor") String nomeProfessor,
+                                  @RequestParam("cidadeProfessor") String cidadeProfessor,
+                                  @RequestParam("graduacaoProfessor") String graduacaoProfessor,
+                                  @RequestParam("equipeProfessor") String equipeProfessor,
+                                  @RequestParam("nascimentoProfessor") String nascimentoProfessor,
+                                  @RequestParam(value = "imagemProfessor", required = false) MultipartFile imagemProfessor,
+                                  RedirectAttributes redirectAttributes) {
+        try {
+            Professor professor = professorService.buscarProfessorPorId(idProfessor);
+            professor.setRegistroProfessor(registroProfessor);
+            professor.setNomeProfessor(nomeProfessor);
+            professor.setCidadeProfessor(cidadeProfessor);
+            professor.setGraduacaoProfessor(graduacaoProfessor);
+            professor.setEquipeProfessor(equipeProfessor);
+            professor.setNascimentoProfessor(LocalDate.parse(nascimentoProfessor));
+
+            professorService.salvarProfessor(professor, imagemProfessor);
+
+            redirectAttributes.addFlashAttribute("successMessage", "Professor atualizado com sucesso!");
+            return "redirect:/professoresAdm?refresh=" + System.currentTimeMillis();
+
+        } catch (IOException e) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Erro ao salvar a imagem: " + e.getMessage());
+            return "redirect:/professoresAdm";
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Erro ao atualizar professor: " + e.getMessage());
+            return "redirect:/professoresAdm";
+        }
+    }
 }

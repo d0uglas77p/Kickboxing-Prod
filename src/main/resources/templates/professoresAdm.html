@@ -146,7 +146,7 @@
                     <tr th:each="professor : ${professores}">
                         <td>
                             <img th:src="${professor.imagemProfessor}" alt="Imagem do professor"
-                                 th:attr="data-nome=${professor.nomeProfessor}, data-registro=${professor.registroProfessor}, data-cidade=${professor.cidadeProfessor}, data-graduacao=${professor.graduacaoProfessor}, data-equipe=${professor.equipeProfessor}, data-nascimento=${professor.nascimentoProfessor}"
+                                 th:attr="data-id=${professor.idProfessor}, data-nome=${professor.nomeProfessor}, data-registro=${professor.registroProfessor}, data-cidade=${professor.cidadeProfessor}, data-graduacao=${professor.graduacaoProfessor}, data-equipe=${professor.equipeProfessor}, data-nascimento=${professor.nascimentoProfessor}"
                                  onclick="openModalImagemProfessor(this)" style="border-radius: 10px;">
                         </td>
 
@@ -188,36 +188,32 @@
                     </div>
 
                     <div class="professor-details">
-                        <p><strong>Nome:</strong> <input style="width: 271px;" type="text" id="professorNome" class="ant-input custom-input-editar" required></p>
+                        <form id="editarProfessorForm" action="/editarProfessor" method="post" enctype="multipart/form-data">
+                            <input type="hidden" id="professorId" name="idProfessor"> <!-- Campo oculto para o ID -->
 
-                        <p><strong>Registro:</strong> <input style="width: 255px;" type="text" id="professorRegistro" class="ant-input custom-input-editar" required></p>
-
-                        <p><strong>Cidade:</strong> <input style="width: 265px;" type="text" id="professorCidade" class="ant-input custom-input-editar" required></p>
-
-                        <p><strong>Equipe:</strong> <input style="width: 265px;" type="text" id="professorEquipe" class="ant-input custom-input-editar" required></p>
-
-                        <p><strong>Graduação:</strong>
-                            <select style="width: 236px;" id="professorGraduacao" class="ant-input custom-input-editar" required>
-                                <option value="" disabled selected>Graduação</option>
-                                <option value="Amarela">Amarela</option>
-                                <option value="Laranja">Laranja</option>
-                                <option value="Verde">Verde</option>
-                                <option value="Azul">Azul</option>
-                                <option value="Marrom">Marrom</option>
-                                <option value="Preta">Preta</option>
-                            </select>
-                        </p>
-
-                        <p><strong>Data de Nascimento:</strong>
-                            <input type="date" id="professorNascimento" class="ant-input custom-input-data" required>
-                        </p>
-
-                        <input style="width: 325px;" type="file" id="imagemProfessores" accept="image/*"
-                               class="ant-input custom-input-upload" required>
-
-                        <div class="div-modal-img-button">
-                            <button type="submit" class="anti-input custom-btn-salvar-conta">Salvar</button>
-                        </div>
+                            <p><strong>Nome:</strong> <input style="width: 271px;" type="text" id="professorNome" name="nomeProfessor" class="ant-input custom-input-editar" required></p>
+                            <p><strong>Registro:</strong> <input style="width: 255px;" type="text" id="professorRegistro" name="registroProfessor" class="ant-input custom-input-editar" required></p>
+                            <p><strong>Cidade:</strong> <input style="width: 265px;" type="text" id="professorCidade" name="cidadeProfessor" class="ant-input custom-input-editar" required></p>
+                            <p><strong>Equipe:</strong> <input style="width: 265px;" type="text" id="professorEquipe" name="equipeProfessor" class="ant-input custom-input-editar" required></p>
+                            <p><strong>Graduação:</strong>
+                                <select style="width: 236px;" id="professorGraduacao" name="graduacaoProfessor" class="ant-input custom-input-editar" required>
+                                    <option value="" disabled selected>Graduação</option>
+                                    <option value="Amarela">Amarela</option>
+                                    <option value="Laranja">Laranja</option>
+                                    <option value="Verde">Verde</option>
+                                    <option value="Azul">Azul</option>
+                                    <option value="Marrom">Marrom</option>
+                                    <option value="Preta">Preta</option>
+                                </select>
+                            </p>
+                            <p><strong>Data de Nascimento:</strong>
+                                <input type="date" id="professorNascimento" name="nascimentoProfessor" class="ant-input custom-input-data" required>
+                            </p>
+                            <input style="width: 325px;" type="file" id="imagemProfessores" name="imagemProfessor" accept="image/*" class="ant-input custom-input-upload">
+                            <div class="div-modal-img-button">
+                                <button type="submit" class="anti-input custom-btn-salvar-conta">Salvar</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
