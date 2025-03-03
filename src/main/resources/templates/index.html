@@ -60,40 +60,66 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- CSS do projeto -->
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 
     <title>Kickboxing</title>
 </head>
 
 <body>
-    <div id="teste">
-        <form action="/admin" method="post">
-            <h2>TESTANDO KICKBOXING</h2>
-
-            <button class="btn-teste" type="submit">TESTANDO</button>
-        </form>
-    </div>
-
     <!--INICIO NAV-->
-    <nav>
+    <div class="div-top-publica">
+        <h1 class="titulo-h1">Federação Gaúcha de Kickboxing</h1>
 
+        <div class="div-contato-publica">
+            <i class="fa-brands fa-instagram custon-icon-contato"></i>
+
+            <i class="fa-brands fa-facebook custon-icon-contato"></i>
+
+            <i class="fa-brands fa-whatsapp custon-icon-contato"></i>
+        </div>
+    </div>
+    <nav class="conteirner-nav-publica">
+        <div>
+            <img src="/static/images/logo.png" alt="Logo da F.G.K.B" class="img-nav-logo">
+        </div>
+
+        <div>
+            <div class="nav-list-publica">
+                <li>
+                    <a style="color: white;">Início</a>
+                </li>
+                <li>
+                    <a >Eventos</a>
+                </li>
+                <li>
+                    <a >Alunos</a>
+                </li>
+                <li>
+                    <a >Professores</a>
+                </li>
+                <li>
+                    <a >Academias</a>
+                </li>
+                <li>
+                    <a >Ranking</a>
+                </li>
+                <li>
+                    <a >Patrocinadores</a>
+                </li>
+            </div>
+        </div>
     </nav>
     <!--FIM NAV-->
 
+    <div id="teste" class="sessao-puclica">
+        <form action="/admin" method="post">
+            <h2>SESSÃO PÚBLICA</h2>
+            <h3>Início - Apresentação em desenvolvimento...</h3>
 
-    <!--INICIO CONTEUDO-->
-    <section>
+            <button type="submit" class="ant-input custom-btn-entrar">Entrar</button>
+        </form>
+    </div>
 
-    </section>
-    <!--FIM CONTEUDO-->
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
     <br>
     <br>
     <br>
